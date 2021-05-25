@@ -8,6 +8,28 @@
     tools:context=".SignUpActivity">
 
     <EditText
+        android:id="@+id/phone_number"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginRight="20dp"
+        android:background="@drawable/form_fill"
+        android:ems="10"
+        android:foregroundGravity="center"
+        android:gravity="center"
+        android:hint="Phone number"
+        android:includeFontPadding="false"
+        android:inputType="phone"
+        android:textColor="#ADADAD"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/username" />
+
+    <EditText
         android:id="@+id/password2"
         android:layout_width="0dp"
         android:layout_height="50dp"
@@ -66,12 +88,12 @@
         android:gravity="center"
         android:includeFontPadding="false"
         android:inputType="textEmailAddress"
-        android:text="E-mail (Optional)"
+        android:hint="E-mail"
         android:textColor="#ADADAD"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/username" />
+        app:layout_constraintTop_toBottomOf="@+id/phone_number" />
 
     <ImageView
         android:id="@+id/logo_forgot"
@@ -97,7 +119,7 @@
         android:gravity="center"
         android:includeFontPadding="false"
         android:inputType="textPersonName"
-        android:text="Username"
+        android:hint="Username"
         android:textColor="#ADADAD"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
@@ -105,12 +127,12 @@
         app:layout_constraintTop_toBottomOf="@+id/logo_forgot" />
 
     <Button
-        android:id="@+id/login"
+        android:id="@+id/signup"
         android:layout_width="206dp"
         android:layout_height="54dp"
         android:layout_marginTop="44dp"
         android:background="@drawable/button_back"
-        android:text="Sign Up"
+        android:hint="Sign Up"
         android:textAllCaps="false"
         android:textSize="25sp"
         app:backgroundTint="#1E8CEB"
@@ -127,8 +149,8 @@
         android:text="Already having an account?"
         android:textColor="#FFFFFF"
         android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="@+id/login"
-        app:layout_constraintStart_toStartOf="@+id/login"
-        app:layout_constraintTop_toBottomOf="@+id/login" />
+        app:layout_constraintEnd_toEndOf="@+id/signup"
+        app:layout_constraintStart_toStartOf="@+id/signup"
+        app:layout_constraintTop_toBottomOf="@+id/signup" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

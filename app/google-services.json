@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "837935370009",
+    "project_id": "fluid-stratum-310914",
+    "storage_bucket": "fluid-stratum-310914.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:837935370009:android:a6068eb261e2ea01a73f88",
+        "android_client_info": {
+          "package_name": "com.example.iqquizapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "837935370009-64i3nhbnhvo9s1sr9ca5jpomdc3sqmga.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAWofqvVI9J4i_iEknmEt0YrIh9-L21MN8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "837935370009-64i3nhbnhvo9s1sr9ca5jpomdc3sqmga.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

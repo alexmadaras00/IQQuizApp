@@ -20,9 +20,9 @@
         android:text="Don't have an account?"
         android:textColor="#FFFFFF"
         android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="@+id/login"
+        app:layout_constraintEnd_toEndOf="@+id/forgot"
         app:layout_constraintHorizontal_bias="0.523"
-        app:layout_constraintStart_toStartOf="@+id/login"
+        app:layout_constraintStart_toStartOf="@+id/forgot"
         app:layout_constraintTop_toBottomOf="@+id/forgot" />
 
     <EditText
@@ -68,9 +68,9 @@
         android:ems="10"
         android:foregroundGravity="center"
         android:gravity="center"
+        android:hint="E-mail"
         android:includeFontPadding="false"
         android:inputType="textPersonName"
-        android:text="Username"
         android:textColor="#ADADAD"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.187"
@@ -83,6 +83,7 @@
         android:layout_height="54dp"
         android:layout_marginTop="36dp"
         android:background="@drawable/button_back"
+        android:enabled="true"
         android:text="Log In"
         android:textAllCaps="false"
         android:textSize="25sp"
@@ -96,11 +97,12 @@
         android:id="@+id/forgot"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="24dp"
         android:text="Forgot password?"
         android:textColor="#FFFFFF"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="@+id/login"
+        app:layout_constraintHorizontal_bias="0.507"
         app:layout_constraintStart_toStartOf="@+id/login"
         app:layout_constraintTop_toBottomOf="@+id/login" />
 </androidx.constraintlayout.widget.ConstraintLayout>

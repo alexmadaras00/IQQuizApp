@@ -22,4 +22,9 @@
     <style name="Theme.IQQuizApp.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <style name="Theme.IQQuizApp.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <style name="CustomProgressBarHorizontal" parent="android:Widget.ProgressBar.Horizontal">
+        <item name="android:minHeight">20dip</item>
+        <item name="android:maxHeight">30dip</item>
+    </style>
 </resources>

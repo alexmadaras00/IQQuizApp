@@ -1,0 +1,58 @@
+{
+  "tests": [
+    {
+      "name": "Raven Test",
+      "description": "Xyz",
+      "amount_question": 2,
+      "questions": [
+        {
+          "text": "Timisoara este in Romania?",
+          "type": "boolean",
+          "r1": "True",
+          "r2": "False",
+          "weight-r1": 2,
+          "weight-r2": 0
+        },
+        {
+          "text": "In ce regiune a tarii locuiti?",
+          "type": "multiplechoice",
+          "r1": "Ardeal",
+          "r2": "Banat",
+          "r3": "Crisana",
+          "r4": "Moldova",
+          "r5": "Muntenia",
+          "r6": "Oltenia",
+          "weight-r1": 20,
+          "weight-r2": 20,
+          "weight-r3": 10,
+          "weight-r4": 10,
+          "weight-r5": 10,
+          "weight-r6": 20
+        }
+      ]
+    },
+    {
+      "name": "Einstein Test",
+      "description": "Beethoven",
+      "amount_question": 1,
+      "questions": [
+        {
+          "text": "In ce regiune a tarii locuiti?",
+          "type": "multiplechoice",
+          "r1": "Ardeal",
+          "r2": "Banat",
+          "r3": "Crisana",
+          "r4": "Moldova",
+          "r5": "Muntenia",
+          "r6": "Oltenia",
+          "weight-r1": 20,
+          "weight-r2": 20,
+          "weight-r3": 10,
+          "weight-r4": 10,
+          "weight-r5": 10,
+          "weight-r6": 20
+        }
+      ]
+    }
+  ]
+}
