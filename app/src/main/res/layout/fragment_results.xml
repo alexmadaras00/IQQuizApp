@@ -13,7 +13,7 @@
         android:id="@+id/continue_button3"
         android:layout_width="0dp"
         android:layout_height="60dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="200dp"
         android:background="@drawable/card_back"
         android:fontFamily="@font/lato"
         android:insetTop="0dp"
@@ -30,95 +30,19 @@
         app:layout_constraintWidth_percent="0.7" />
 
     <TextView
-        android:id="@+id/sixth"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:fontFamily="@font/lato"
-        android:text="51-70 - Mild Dementia"
-        android:textColor="#FFFFFF"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@+id/first"
-        app:layout_constraintTop_toBottomOf="@+id/fifth" />
-
-    <TextView
-        android:id="@+id/seventh"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:fontFamily="@font/lato"
-        android:text="21-50 - Average Degree of Dementia"
-        android:textColor="#FFFFFF"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@+id/first"
-        app:layout_constraintTop_toBottomOf="@+id/sixth" />
-
-    <TextView
         android:id="@+id/eighth"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="144dp"
         android:fontFamily="@font/lato"
-        android:text="0-20 - Severe Dementia"
+        android:text="Severe Dementia"
         android:textColor="#FFFFFF"
-        android:textSize="20sp"
+        android:textSize="35sp"
         android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@+id/first"
-        app:layout_constraintTop_toBottomOf="@+id/seventh" />
-
-    <TextView
-        android:id="@+id/fifth"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:fontFamily="@font/lato"
-        android:text="71-80 - Low level of intelect"
-        android:textColor="#FFFFFF"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@+id/first"
-        app:layout_constraintTop_toBottomOf="@+id/fourth" />
-
-    <TextView
-        android:id="@+id/fourth"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:fontFamily="@font/lato"
-        android:text="81-90 - Intellect is below average"
-        android:textColor="#FFFFFF"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@+id/first"
-        app:layout_constraintTop_toBottomOf="@+id/third" />
-
-    <TextView
-        android:id="@+id/third"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:fontFamily="@font/lato"
-        android:text="91-110 - Medium level of intellect"
-        android:textColor="#FFFFFF"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@+id/first"
-        app:layout_constraintTop_toBottomOf="@+id/second" />
-
-    <TextView
-        android:id="@+id/second"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:fontFamily="@font/lato"
-        android:text="111-120 - Intellect above average"
-        android:textColor="#FFFFFF"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@+id/first"
-        app:layout_constraintTop_toBottomOf="@+id/first" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.431"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/border" />
 
     <LinearLayout
         android:id="@+id/border"
@@ -210,18 +134,4 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <TextView
-        android:id="@+id/first"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginLeft="24dp"
-        android:layout_marginTop="24dp"
-        android:fontFamily="@font/lato"
-        android:text="More than 121 - Very High Intellect"
-        android:textColor="#FFFFFF"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@+id/border"
-        app:layout_constraintTop_toBottomOf="@+id/border" />
 </androidx.constraintlayout.widget.ConstraintLayout>

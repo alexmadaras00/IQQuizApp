@@ -1,11 +1,8 @@
 package com.example.iqquizapp
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
-import androidx.navigation.findNavController
+import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.iqquizapp.Global.Companion.ageSelected
 import com.example.iqquizapp.Global.Companion.itemSelected
@@ -15,14 +12,6 @@ import kotlinx.android.synthetic.main.fragment_age_selection_framgent.*
 
 
 class AgeSelectionFramgent : Fragment(R.layout.fragment_age_selection_framgent) {
-
-
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.fragment_age_selection_framgent, container, false)
-    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

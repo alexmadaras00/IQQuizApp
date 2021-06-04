@@ -6,7 +6,8 @@ import com.example.iqquizapp.DataClasses.Test
 
 class Global:Application() {
     companion object{
-        var logged:Boolean=false
+        var added: Boolean = false
+        var logged: Boolean = false
         val t=ArrayList<Test>()
         var itemSelected:Int = 0
         var tests=ArrayList<Test>()
