@@ -18,6 +18,7 @@ import java.io.IOException
 class ListFragment : Fragment(R.layout.fragment_list) {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        getJSON()
         if (!added) {
             try {
                 val array = JSONObject(getJSON()!!).getJSONArray("tests")

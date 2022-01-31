@@ -110,4 +110,15 @@
     <string name="login_failed">"Login failed"</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="_50">50%</string>
+    <string name="don_t_have_an_account">Don\'t have an account?</string>
+    <string name="e_ntrapezus">E.\nTrapezus</string>
+    <string name="a_continue">Continue</string>
+    <string name="d_ncircle">D.\nCircle</string>
+    <string name="f_ndiamond">F.\nDiamond</string>
+    <string name="c_nsquare">C.\nSquare</string>
+    <string name="type_your_answer">Type your answer:</string>
+    <string name="_1_50">1/50</string>
+    <string name="which_shape_do_you_see_in_the_following_image">Which shape do you see in the following image?</string>
+    <string name="a_nrectangle">A.\nRectangle</string>
+    <string name="b_ntriangle">B.\nTriangle</string>
 </resources>

@@ -8,10 +8,9 @@ import com.example.iqquizapp.Global.Companion.ageSelected
 import com.example.iqquizapp.Global.Companion.itemSelected
 import com.example.iqquizapp.Global.Companion.t
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.fragment_age_selection_framgent.*
+import kotlinx.android.synthetic.main.fragment_age_selection_fragment.*
 
-
-class AgeSelectionFramgent : Fragment(R.layout.fragment_age_selection_framgent) {
+class AgeSelectionFramgent : Fragment(R.layout.fragment_age_selection_fragment) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

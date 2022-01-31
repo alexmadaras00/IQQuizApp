@@ -2,7 +2,7 @@
   "tests": [
     {
       "name": "Raven Test",
-      "description": "Xyz",
+      "description": "Raven Matrices is the test of intelligence. It was designed to measure the level of both intellectual development and logical thinking. You can determine the adults' IQ, aged 14 to 65, regardless of nationality, religion and other differences with its help. This test appeared back in 1936 thanks to John Raven.",
       "amount_question": 40,
       "questions": [
         {
@@ -15,12 +15,12 @@
           "r4": "18",
           "r5": "20",
           "r6": "8",
-          "weight-r1": 10,
-          "weight-r2": 0,
-          "weight-r3": 0,
-          "weight-r4": 0,
-          "weight-r5": 0,
-          "weight-r6": 0
+          "weight_r1": 10,
+          "weight_r2": 0,
+          "weight_r3": 0,
+          "weight_r4": 0,
+          "weight_r5": 0,
+          "weight_r6": 0
         },
         {
           "r1": "SLABIT",
@@ -31,13 +31,13 @@
           "r6": "BOLNAV",
           "text": "Predispus la vatamare \nCare dintre cuvintele de mai jos se potrivesc cel mai bine definitiei de mai sus?",
           "type": "onechoice",
-          "image": "draw",
-          "weight-r1": 0,
-          "weight-r2": 10,
-          "weight-r3": 0,
-          "weight-r4": 0,
-          "weight-r5": 0,
-          "weight-r6": 0
+          "image": "null",
+          "weight_r1": 0,
+          "weight_r2": 10,
+          "weight_r3": 0,
+          "weight_r4": 0,
+          "weight_r5": 0,
+          "weight_r6": 0
         },
         {
           "text": "DUMINICA, LUNI, MARTI, MIERCURI, JOI, VINERI, SAMBATA, DUMINICA\nCe zi vine cu 3 zile inainte de ziua imediat urmatoare zilei ce cade cu 2 zile inainte de ziua cu 3 zile dupa ziua ce vine imediat dupa vineri?",
@@ -49,29 +49,29 @@
           "r4": "VINERI",
           "r5": "MIERCURI",
           "r6": "JOI",
-          "weight-r1": 0,
-          "weight-r2": 0,
-          "weight-r3": 0,
-          "weight-r4": 0,
-          "weight-r5": 10,
-          "weight-r6": 0
+          "weight_r1": 0,
+          "weight_r2": 0,
+          "weight_r3": 0,
+          "weight_r4": 0,
+          "weight_r5": 10,
+          "weight_r6": 0
         },
         {
           "text": "Schimbati doar o singura litera in fiecare dintre cuvintele de mai jos pentru a descoperi o binecunoscuta fraza.\nFANTA CHEI",
           "type": "onechoice",
-          "image": "draw",
+          "image": "null",
           "r1": "FANTA CEHI",
           "r2": "FONTA CHEI",
           "r3": "PANTA RHEI",
           "r4": "FINTA RHEI",
           "r5": "FANTA RHEI",
           "r6": "FINTA CEHI",
-          "weight-r1": 0,
-          "weight-r2": 0,
-          "weight-r3": 10,
-          "weight-r4": 0,
-          "weight-r5": 0,
-          "weight-r6": 0
+          "weight_r1": 0,
+          "weight_r2": 0,
+          "weight_r3": 10,
+          "weight_r4": 0,
+          "weight_r5": 0,
+          "weight_r6": 0
         },
         {
           "text": "Mergeti in sensul acelor de ceasornic pentru a forma un cuvant din 10 litere care incepe si se termina cu aceleasi 2 litere. Trebuie sa completati litera lipsa.",
@@ -83,12 +83,12 @@
           "r4": "a",
           "r5": "e",
           "r6": "i",
-          "weight-r1": 0,
-          "weight-r2": 0,
-          "weight-r3": 0,
-          "weight-r4": 0,
-          "weight-r5": 0,
-          "weight-r6": 10
+          "weight_r1": 0,
+          "weight_r2": 0,
+          "weight_r3": 0,
+          "weight_r4": 0,
+          "weight_r5": 0,
+          "weight_r6": 10
         },
         {
           "text": "Completati spatiile cu literele de mai jos, pentru a forma o expresie palindromica, adica o expresie care se citeste la fel inainte si inapoi.\n NAS CAIS\nC..., AI .A.?",
@@ -100,12 +100,12 @@
           "r4": "CAMELIA,M,C",
           "r5": "CAMIL,M,C",
           "r6": "CORIN,R,C",
-          "weight-r1": 10,
-          "weight-r2": 0,
-          "weight-r3": 0,
-          "weight-r4": 0,
-          "weight-r5": 0,
-          "weight-r6": 0
+          "weight_r1": 10,
+          "weight_r2": 0,
+          "weight_r3": 0,
+          "weight_r4": 0,
+          "weight_r5": 0,
+          "weight_r6": 0
         },
         {
           "text": "Completati spatiile cu literele de mai jos, pentru a forma o expresie palindromica, adica o expresie care se citeste la fel inainte si inapoi.\n NAS CAIS\nC..., AI .A.?",
@@ -117,12 +117,12 @@
           "r4": "CAMELIA,M,C",
           "r5": "CAMIL,M,C",
           "r6": "CORIN,R,C",
-          "weight-r1": 10,
-          "weight-r2": 0,
-          "weight-r3": 0,
-          "weight-r4": 0,
-          "weight-r5": 0,
-          "weight-r6": 0
+          "weight_r1": 10,
+          "weight_r2": 0,
+          "weight_r3": 0,
+          "weight_r4": 0,
+          "weight_r5": 0,
+          "weight_r6": 0
         },
         {
           "text": "Care dintre urmatoarele piese va forma un patrat cu piesa de mai sus?",
@@ -134,12 +134,12 @@
           "r4": "D",
           "r5": "E",
           "r6": "F",
-          "weight-r1": 0,
-          "weight-r2": 10,
-          "weight-r3": 0,
-          "weight-r4": 0,
-          "weight-r5": 0,
-          "weight-r6": 0
+          "weight_r1": 0,
+          "weight_r2": 10,
+          "weight_r3": 0,
+          "weight_r4": 0,
+          "weight_r5": 0,
+          "weight_r6": 0
         },
         {
           "text": "Care dintre urmatoarele piese va forma un patrat cu piesa de mai sus?",
@@ -151,12 +151,12 @@
           "r4": "D",
           "r5": "E",
           "r6": "F",
-          "weight-r1": 0,
-          "weight-r2": 10,
-          "weight-r3": 0,
-          "weight-r4": 0,
-          "weight-r5": 0,
-          "weight-r6": 0
+          "weight_r1": 0,
+          "weight_r2": 10,
+          "weight_r3": 0,
+          "weight_r4": 0,
+          "weight_r5": 0,
+          "weight_r6": 0
         },
         {
           "text": "Aruncand o privire pe ziarul de dimineata, observati ca lipsesc 4 pagini. Una dintre paginile lipsa este 8.Ultima pagina a ziarului e 28. Care sunt celelalte pagini lipsa?",
@@ -168,12 +168,12 @@
           "r4": "1,21,22",
           "r5": "1,22",
           "r6": "10,22,27",
-          "weight-r1": 0,
-          "weight-r2": 0,
-          "weight-r3": 10,
-          "weight-r4": 0,
-          "weight-r5": 0,
-          "weight-r6": 0
+          "weight_r1": 0,
+          "weight_r2": 0,
+          "weight_r3": 10,
+          "weight_r4": 0,
+          "weight_r5": 0,
+          "weight_r6": 0
         },
         {
           "text": "Care dintre urmatoarele cuvinte nu este anagrama unui fruct?",
@@ -185,12 +185,12 @@
           "r4": "LAC IES",
           "r5": "FAG AR",
           "r6": "INS VIA",
-          "weight-r1": 0,
-          "weight-r2": 0,
-          "weight-r3": 10,
-          "weight-r4": 0,
-          "weight-r5": 0,
-          "weight-r6": 0
+          "weight_r1": 0,
+          "weight_r2": 0,
+          "weight_r3": 10,
+          "weight_r4": 0,
+          "weight_r5": 0,
+          "weight_r6": 0
         },
         {
           "text": "Ce cuvant dintre paranteze este opus sens cuvantului scris cu majuscule?\n\n SEMNIFICATIV",
@@ -202,12 +202,12 @@
           "r4": "marunt",
           "r5": "monoton",
           "r6": "ireal",
-          "weight-r1": 0,
-          "weight-r2": 0,
-          "weight-r3": 10,
-          "weight-r4": 0,
-          "weight-r5": 0,
-          "weight-r6": 0
+          "weight_r1": 0,
+          "weight_r2": 0,
+          "weight_r3": 10,
+          "weight_r4": 0,
+          "weight_r5": 0,
+          "weight_r6": 0
         },
         {
           "text": "FELINE:    PISICA \nVULPINE:  ",
@@ -219,12 +219,12 @@
           "r4": "lup",
           "r5": "oaie",
           "r6": "cal",
-          "weight-r1": 0,
-          "weight-r2": 10,
-          "weight-r3": 0,
-          "weight-r4": 0,
-          "weight-r5": 0,
-          "weight-r6": 0
+          "weight_r1": 0,
+          "weight_r2": 10,
+          "weight_r3": 0,
+          "weight_r4": 0,
+          "weight_r5": 0,
+          "weight_r6": 0
         },
         {
           "text": "Ce numar ar trebui sa inlocuiasca semnul de intrebare?",
@@ -236,15 +236,15 @@
           "r4": "13",
           "r5": "4",
           "r6": "14",
-          "weight-r1": 0,
-          "weight-r2": 0,
-          "weight-r3": 0,
-          "weight-r4": 0,
-          "weight-r5": 0,
-          "weight-r6": 10
+          "weight_r1": 0,
+          "weight_r2": 0,
+          "weight_r3": 0,
+          "weight_r4": 0,
+          "weight_r5": 0,
+          "weight_r6": 10
         },
         {
-          "text": "Gasiti 2 cuvinte, unul in prima grila, iar celalalt in a doua, care sunt anonime.Cuvintele pot fi citite inainte, inapoi, orizontal, vertical sau pe diagonala, dar intotdeauna in linie dreapta. ",
+          "text": "Gasiti 2 cuvinte, unul in prima grila, iar celalalt in a doua, care sunt antonime. Cuvintele pot fi citite inainte, inapoi, orizontal, vertical sau pe diagonala, dar intotdeauna in linie dreapta. ",
           "type": "onechoice",
           "image": "draw",
           "r1": "STOP, START",
@@ -253,12 +253,12 @@
           "r4": "PAT, SARE",
           "r5": "APT, AM",
           "r6": "PAS, OS",
-          "weight-r1": 10,
-          "weight-r2": 0,
-          "weight-r3": 0,
-          "weight-r4": 0,
-          "weight-r5": 0,
-          "weight-r6": 0
+          "weight_r1": 10,
+          "weight_r2": 0,
+          "weight_r3": 0,
+          "weight_r4": 0,
+          "weight_r5": 0,
+          "weight_r6": 0
         },
         {
           "text": "Eliminati figura nepotrivita\nCare dintre  figurile A,B,C,D SAU E nu se potriveste?",
@@ -269,11 +269,11 @@
           "r3": "C",
           "r4": "D",
           "r5": "E",
-          "weight-r1": 0,
-          "weight-r2": 10,
-          "weight-r3": 0,
-          "weight-r4": 0,
-          "weight-r5": 0
+          "weight_r1": 0,
+          "weight_r2": 10,
+          "weight_r3": 0,
+          "weight_r4": 0,
+          "weight_r5": 0
         },
         {
           "text": "Aranjati urmatoarele cuvinte intr-o linie, astfel incat fiecare pereche de cuvinte din linie sa formeze un nou cuvant sau expresie. De exemplu: sat,apain castel= castel, apa,sat, in - devin: castel (de) apa, apasat, satin.\nCONT, DE, PORT, PARA, EX, ABIL, ROL",
@@ -284,11 +284,11 @@
           "r3": "Abil-de-de-ex-port-para-cont-rol",
           "r4": "Cont-rol-de-ex-port-para-abil",
           "r5": "Cont-rol-para-abil-de-ex-port",
-          "weight-r1": 10,
-          "weight-r2": 0,
-          "weight-r3": 0,
-          "weight-r4": 0,
-          "weight-r5": 0
+          "weight_r1": 10,
+          "weight_r2": 0,
+          "weight_r3": 0,
+          "weight_r4": 0,
+          "weight_r5": 0
         },
         {
           "text": "Care sunt urmatoarele 2 numere in aceasta secventa?",
@@ -300,12 +300,12 @@
           "r4": "50,100",
           "r5": "24,96",
           "r6": "20,120",
-          "weight-r1": 0,
-          "weight-r2": 10,
-          "weight-r3": 0,
-          "weight-r4": 0,
-          "weight-r5": 0,
-          "weight-r6": 0
+          "weight_r1": 0,
+          "weight_r2": 10,
+          "weight_r3": 0,
+          "weight_r4": 0,
+          "weight_r5": 0,
+          "weight_r6": 0
         },
         {
           "text": "Ce nu se potriveste?\n\nCOCOS,TAP,GASCAN,LEBADA,BERBEC",
@@ -316,18 +316,18 @@
           "r3": "GASCAN",
           "r4": "LEBADA",
           "r5": "BERBEC",
-          "weight-r1": 0,
-          "weight-r2": 0,
-          "weight-r3": 0,
-          "weight-r4": 10,
-          "weight-r5": 0
+          "weight_r1": 0,
+          "weight_r2": 0,
+          "weight_r3": 0,
+          "weight_r4": 10,
+          "weight_r5": 0
         },
         {
           "text": "Reconstruiti urmatorul cuvant compus: \nIndiciu: Prajitura de casa\n\n.L..-..-..PA..",
           "type": "free",
           "image": "draw",
           "r": "Alba-ca-zapada",
-          "weight-r": 10
+          "weight_r": 10
         },
         {
           "text": "Ce numere ar trebui sa inlocuiasca semnele de intrebare?",
@@ -339,26 +339,26 @@
           "r4": "22",
           "r5": "24",
           "r6": "28",
-          "weight-r1": 0,
-          "weight-r2": 0,
-          "weight-r3": 0,
-          "weight-r4": 10,
-          "weight-r5": 0,
-          "weight-r6": 0
+          "weight_r1": 0,
+          "weight_r2": 0,
+          "weight_r3": 0,
+          "weight_r4": 10,
+          "weight_r5": 0,
+          "weight_r6": 0
         },
         {
           "text": "BUJIE LAR este anagrama carui cuvant din opt litere?",
           "type": "free",
           "image": "draw",
           "r": "JUBILARE",
-          "weight-r": 10
+          "weight_r": 10
         },
         {
           "text": "Completati spatiile goale, in sensul sau contrar acelor de ceasornic, pentru a forma un cuvant.",
           "type": "free",
           "image": "draw",
           "r": "JUBILARE",
-          "weight-r": 10
+          "weight_r": 10
         },
         {
           "text": "Ce este intotdeanua asociat cu un REZERVOR?",
@@ -369,25 +369,25 @@
           "r3": "un valet",
           "r4": "un recipient",
           "r5": "un portar",
-          "weight-r1": 0,
-          "weight-r2": 0,
-          "weight-r3": 0,
-          "weight-r4": 10,
-          "weight-r5": 0
+          "weight_r1": 0,
+          "weight_r2": 0,
+          "weight_r3": 0,
+          "weight_r4": 10,
+          "weight_r5": 0
         },
         {
           "text": "Introduceti un cuvatn care sa insemne acelasi lucru ca si cuvintele din afara parentezelor.\n\nMONEDA(....) INSTRUMENT MUZICAL",
           "type": "onechoice",
           "image": "draw",
           "r": "Lira",
-          "weight-r": 10
+          "weight_r": 10
         },
         {
           "text": "Rezolvati urmatoarea anagrama pentru a descoperi un cuvant.\n\nALB MACI",
           "type": "onechoice",
           "image": "draw",
           "r": "Alambic",
-          "weight-r": 10
+          "weight_r": 10
         },
         {
           "text": "Eliminati nepotrivirea!\nCare dintre urmatoarele figuri nu se potriveste?",
@@ -400,20 +400,20 @@
           "r5": "E",
           "r6": "F",
           "r7": "G",
-          "weight-r1": 0,
-          "weight-r2": 10,
-          "weight-r3": 0,
-          "weight-r4": 0,
-          "weight-r5": 0,
-          "weight-r6": 0,
-          "weight-r7": 0
+          "weight_r1": 0,
+          "weight_r2": 10,
+          "weight_r3": 0,
+          "weight_r4": 0,
+          "weight_r5": 0,
+          "weight_r6": 0,
+          "weight_r7": 0
         },
         {
           "text": "Ce numar ar trebui sa inlocuiasca semnul de intrebare?\n\n61, 54, 622, ?, 63, 56, 64",
           "type": "free",
           "image": "draw",
           "r1": "55",
-          "weight-r": 0
+          "weight_r": 0
         },
         {
           "text": "Ce este un CHIBIT?",
@@ -424,11 +424,11 @@
           "r3": "o podoaba",
           "r4": "un navod",
           "r5": "un bagacios",
-          "weight-r1": 0,
-          "weight-r2": 0,
-          "weight-r3": 0,
-          "weight-r4": 0,
-          "weight-r5": 10
+          "weight_r1": 0,
+          "weight_r2": 0,
+          "weight_r3": 0,
+          "weight_r4": 0,
+          "weight_r5": 10
         },
         {
           "text": "Combinati 2 segmente din 3 litere pentru a afla denumirea unui copac.\n\nCAS-CHE-ACA-RRI-HER-CIA-AND-ALM",
@@ -440,19 +440,19 @@
           "r4": "22",
           "r5": "24",
           "r6": "28",
-          "weight-r1": 0,
-          "weight-r2": 0,
-          "weight-r3": 0,
-          "weight-r4": 10,
-          "weight-r5": 0,
-          "weight-r6": 0
+          "weight_r1": 0,
+          "weight_r2": 0,
+          "weight_r3": 0,
+          "weight_r4": 10,
+          "weight_r5": 0,
+          "weight_r6": 0
         },
         {
           "text": "Inlocuiti punctele cu un cuvant pentru a forma 5 cuvinte noi",
           "type": "free",
           "image": "draw",
           "r": "Anti",
-          "weight-r": 10
+          "weight_r": 10
         },
         {
           "text": "Cercuri\nCare dintre A, B, C, D sau E se potriveste in cercul liber pentru a continua secventa logica?",
@@ -463,11 +463,11 @@
           "r3": "C",
           "r4": "D",
           "r5": "E",
-          "weight-r1": 0,
-          "weight-r2": 0,
-          "weight-r3": 0,
-          "weight-r4": 10,
-          "weight-r5": 0
+          "weight_r1": 0,
+          "weight_r2": 0,
+          "weight_r3": 0,
+          "weight_r4": 10,
+          "weight_r5": 0
         },
         {
           "text": "Care dintre urmatoarele cuvinte au acelasi sens?\n\nFLASC, SCAPARATOR, INSELATOR, INFLUENT, VITAL, STRALUCITOR",
@@ -479,18 +479,18 @@
           "r4": "INFLUENT,FLASC",
           "r5": "VITAL,FLASC",
           "r6": "STRALUCITOR,SCAPARATOR",
-          "weight-r1": 0,
-          "weight-r2": 0,
-          "weight-r3": 0,
-          "weight-r4": 0,
-          "weight-r5": 0,
-          "weight-r6": 10
+          "weight_r1": 0,
+          "weight_r2": 0,
+          "weight_r3": 0,
+          "weight_r4": 0,
+          "weight_r5": 0,
+          "weight_r6": 10
         },
         {
           "text": "Completati spatiile goale, in sensul sau contrar acelor de ceasornic, pentru a forma 2 cuvinte sinonime.",
           "type": "free",
           "r": "Ridicoli, rizibili",
-          "weight-r": 10
+          "weight_r": 10
         },
         {
           "text": "Ce cuvant are acelasi sens cu NEOFIT?",
@@ -500,10 +500,10 @@
           "r2": "junta",
           "r3": "necromant",
           "r4": "novice",
-          "weight-r1": 0,
-          "weight-r2": 0,
-          "weight-r3": 0,
-          "weight-r4": 10
+          "weight_r1": 0,
+          "weight_r2": 0,
+          "weight_r3": 0,
+          "weight_r4": 10
         },
         {
           "text": "Ce valoare are x?",
@@ -515,12 +515,12 @@
           "r4": "1 intreg si 1/3",
           "r5": "1 intreg si 8/9",
           "r6": "2",
-          "weight-r1": 0,
-          "weight-r2": 0,
-          "weight-r3": 10,
-          "weight-r4": 0,
-          "weight-r5": 0,
-          "weight-r6": 0
+          "weight_r1": 0,
+          "weight_r2": 0,
+          "weight_r3": 10,
+          "weight_r4": 0,
+          "weight_r5": 0,
+          "weight_r6": 0
         },
         {
           "text": "Care hexagon A, B, C, D sau E se potriveste in spatiul ramas liber?",
@@ -531,11 +531,11 @@
           "r3": "C",
           "r4": "D",
           "r5": "E",
-          "weight-r1": 0,
-          "weight-r2": 10,
-          "weight-r3": 0,
-          "weight-r4": 0,
-          "weight-r5": 0
+          "weight_r1": 0,
+          "weight_r2": 10,
+          "weight_r3": 0,
+          "weight_r4": 0,
+          "weight_r5": 0
         },
         {
           "text": "Ce numar ar trebui sa inlocuiasca semnul de intrebare?",
@@ -547,12 +547,12 @@
           "r4": "15",
           "r5": "20",
           "r6": "180",
-          "weight-r1": 0,
-          "weight-r2": 10,
-          "weight-r3": 0,
-          "weight-r4": 0,
-          "weight-r5": 0,
-          "weight-r6": 0
+          "weight_r1": 0,
+          "weight_r2": 10,
+          "weight_r3": 0,
+          "weight_r4": 0,
+          "weight_r5": 0,
+          "weight_r6": 0
         },
         {
           "text": "Care e valoarea lui x?",
@@ -564,12 +564,12 @@
           "r4": "250",
           "r5": "80",
           "r6": "300",
-          "weight-r1": 10,
-          "weight-r2": 0,
-          "weight-r3": 0,
-          "weight-r4": 0,
-          "weight-r5": 0,
-          "weight-r6": 0
+          "weight_r1": 10,
+          "weight_r2": 0,
+          "weight_r3": 0,
+          "weight_r4": 0,
+          "weight_r5": 0,
+          "weight_r6": 0
         },
         {
           "text": "Care e denumirea pentru un grup de SCRUMBII?",
@@ -580,11 +580,11 @@
           "r3": "suita",
           "r4": "snop",
           "r5": "banc",
-          "weight-r1": 10,
-          "weight-r2": 0,
-          "weight-r3": 0,
-          "weight-r4": 0,
-          "weight-r5": 10
+          "weight_r1": 10,
+          "weight_r2": 0,
+          "weight_r3": 0,
+          "weight_r4": 0,
+          "weight_r5": 10
         },
         {
           "text": "Ce numar ar trebui sa inlocuiasca semnul de intrebare?",
@@ -595,26 +595,33 @@
           "r3": "10",
           "r4": "30",
           "r5": "9",
-          "weight-r1": 0,
-          "weight-r2": 0,
-          "weight-r3": 0,
-          "weight-r4": 10,
-          "weight-r5": 0
+          "weight_r1": 0,
+          "weight_r2": 0,
+          "weight_r3": 0,
+          "weight_r4": 10,
+          "weight_r5": 0
         },
         {
           "text": "Ficare dintre cele 9 patrate din grila notate de la 1A pana la 3C ar trebui sa incorporeze toate liniile si simbolurile care apar in patratele cu aceeasi litera si cifra de deasupra si de la stanga. De exemplu, 2B ar trebui sa incorporeze toate liniile si simbolurile care se afla in 2 si B.\nUnul dintre patrate e incorect. Care e acesta?",
           "type": "free",
           "image": "draw",
           "r": "2A",
-          "weight-r": 10
+          "weight_r": 10
         }
       ]
     },
     {
       "name": "Einstein Test",
       "description": "Beethoven",
-      "amount_question": 1,
+      "amount_question": 2,
       "questions": [
+        {
+          "text": "BUJIE LAR este anagrama carui cuvant din opt litere?",
+          "type": "free",
+          "image": "null",
+          "r": "JUBILARE",
+          "weight_r": 10
+        },
         {
           "text": "In ce regiune a tarii locuiti?",
           "image": "draw",
@@ -625,12 +632,12 @@
           "r4": "Moldova",
           "r5": "Muntenia",
           "r6": "Oltenia",
-          "weight-r1": 20,
-          "weight-r2": 20,
-          "weight-r3": 10,
-          "weight-r4": 10,
-          "weight-r5": 10,
-          "weight-r6": 20
+          "weight_r1": 20,
+          "weight_r2": 20,
+          "weight_r3": 10,
+          "weight_r4": 10,
+          "weight_r5": 10,
+          "weight_r6": 20
         }
       ]
     },
@@ -648,11 +655,11 @@
           "r3": "C",
           "r4": "D",
           "r5": "E",
-          "weight-r1": 20,
-          "weight-r2": 20,
-          "weight-r3": 10,
-          "weight-r4": 10,
-          "weight-r5": 10
+          "weight_r1": 20,
+          "weight_r2": 20,
+          "weight_r3": 10,
+          "weight_r4": 10,
+          "weight_r5": 10
         },
         {
           "text": "Select two words that are synonyms, plus an antonym of\nthese two synonyms, from the list of words below.\nchoke, force, thrive, toil, wither, burgeon, strive",
@@ -662,10 +669,10 @@
           "r2": "thrive, toil",
           "r3": "force, wither",
           "r4": "choke, wither",
-          "weight-r1": 0,
-          "weight-r2": 0,
-          "weight-r3": 0,
-          "weight-r4": 10
+          "weight_r1": 0,
+          "weight_r2": 0,
+          "weight_r3": 0,
+          "weight_r4": 10
         },
         {
           "text": "19, 20, 21, ?, ?, 26, 28, 32, 33, 40\nWhich two numbers should replace the question marks?",
@@ -675,10 +682,10 @@
           "r2": "21, 23",
           "r3": "21, 24",
           "r4": "22,24",
-          "weight-r1": 0,
-          "weight-r2": 0,
-          "weight-r3": 0,
-          "weight-r4": 10
+          "weight_r1": 0,
+          "weight_r2": 0,
+          "weight_r3": 0,
+          "weight_r4": 10
         },
         {
           "text": "The institution houses collections of objects of artistic,\nhistoric and scientific interest, and displayed for the edification\nand enjoyment of the public.\nOne word has been removed from the passage above. Select\nthat word from the choice below and reinstate it into its\ncorrect place in the passage.",
@@ -690,12 +697,12 @@
           "r4": "conserved",
           "r5": "priceless",
           "r6": "accumulated",
-          "weight-r1": 0,
-          "weight-r2": 0,
-          "weight-r3": 0,
-          "weight-r4": 0,
-          "weight-r5": 10,
-          "weight-r6": 10
+          "weight_r1": 0,
+          "weight_r2": 0,
+          "weight_r3": 0,
+          "weight_r4": 0,
+          "weight_r5": 10,
+          "weight_r6": 10
         },
         {
           "text": "Which is the odd one out?",
@@ -706,11 +713,11 @@
           "r3": "compilation",
           "r4": "convocation",
           "r5": "aggregation",
-          "weight-r1": 0,
-          "weight-r2": 0,
-          "weight-r3": 0,
-          "weight-r4": 0,
-          "weight-r5": 10
+          "weight_r1": 0,
+          "weight_r2": 0,
+          "weight_r3": 0,
+          "weight_r4": 0,
+          "weight_r5": 10
         },
         {
           "text": "Which is the odd one out?",
@@ -721,11 +728,11 @@
           "r3": "# #",
           "r4": "= #",
           "r5": "– =",
-          "weight-r1": 0,
-          "weight-r2": 0,
-          "weight-r3": 0,
-          "weight-r4": 0,
-          "weight-r5": 10
+          "weight_r1": 0,
+          "weight_r2": 0,
+          "weight_r3": 0,
+          "weight_r4": 0,
+          "weight_r5": 10
         },
         {
           "text": "Which number is the odd one out?",
@@ -737,12 +744,12 @@
           "r4": "36119",
           "r5": "67626",
           "r6": "72927",
-          "weight-r1": 0,
-          "weight-r2": 0,
-          "weight-r3": 0,
-          "weight-r4": 0,
-          "weight-r5": 10,
-          "weight-r6": 0
+          "weight_r1": 0,
+          "weight_r2": 0,
+          "weight_r3": 0,
+          "weight_r4": 0,
+          "weight_r5": 10,
+          "weight_r6": 0
         },
         {
           "text": "Identify two words (one from each set of brackets) that form\na connection (analogy), thereby relating to the words in\ncapitals in the same way.\nCAT (lash, parade, feline, whiskers)\nSLEEP (somnambulate, night, bed, Morpheus)",
@@ -752,10 +759,10 @@
           "r2": "lash,Morpheus",
           "r3": "whiskers,Morpheus",
           "r4": "parade,Morpheus",
-          "weight-r1": 10,
-          "weight-r2": 0,
-          "weight-r3": 0,
-          "weight-r4": 0
+          "weight_r1": 10,
+          "weight_r2": 0,
+          "weight_r3": 0,
+          "weight_r4": 0
         },
         {
           "text": "Which word in brackets is closest in meaning to the word in\ncapitals?\nFLIPPANT (obverse, irreverent, feeble, candid, facile)",
@@ -766,11 +773,11 @@
           "r3": "feeble",
           "r4": "candid",
           "r5": "facile",
-          "weight-r1": 0,
-          "weight-r2": 10,
-          "weight-r3": 0,
-          "weight-r4": 0,
-          "weight-r5": 0
+          "weight_r1": 0,
+          "weight_r2": 10,
+          "weight_r3": 0,
+          "weight_r4": 0,
+          "weight_r5": 0
         },
         {
           "text": "Identify two words (one from each set of brackets) that form\na connection (analogy), thereby relating to the words in\ncapitals in the same way.\nCAT (lash, parade, feline, whiskers)\nSLEEP (somnambulate, night, bed, Morpheus)",
@@ -780,10 +787,10 @@
           "r2": "524251",
           "r3": "764550",
           "r4": "904930",
-          "weight-r1": 10,
-          "weight-r2": 0,
-          "weight-r3": 0,
-          "weight-r4": 0
+          "weight_r1": 10,
+          "weight_r2": 0,
+          "weight_r3": 0,
+          "weight_r4": 0
         }
       ]
     }
