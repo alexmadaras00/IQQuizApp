@@ -1,4 +1,4 @@
-package com.example.iqquizapp
+package com.example.iqquizapp.fragments
 
 import android.annotation.SuppressLint
 import android.graphics.Color
@@ -10,10 +10,21 @@ import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
-import com.example.iqquizapp.DataClasses.Question
+import com.example.iqquizapp.Global
+import com.example.iqquizapp.Global.Companion.currentPointsTest1
+import com.example.iqquizapp.Global.Companion.currentPointsTest2
+import com.example.iqquizapp.Global.Companion.currentPointsTest3
 import com.example.iqquizapp.Global.Companion.itemSelected
+import com.example.iqquizapp.Global.Companion.progressTest1
+import com.example.iqquizapp.Global.Companion.progressTest2
+import com.example.iqquizapp.Global.Companion.progressTest3
 import com.example.iqquizapp.Global.Companion.q1
 import com.example.iqquizapp.Global.Companion.t
+import com.example.iqquizapp.Global.Companion.test1Done
+import com.example.iqquizapp.Global.Companion.test2Done
+import com.example.iqquizapp.Global.Companion.test3Done
+import com.example.iqquizapp.R
+import com.example.iqquizapp.models.Question
 import kotlinx.android.synthetic.main.fragment_question.*
 import org.json.JSONException
 import org.json.JSONObject
@@ -29,14 +40,29 @@ class QuestionFragment : Fragment(R.layout.fragment_question) {
         q1.clear()
         initialize()
         println(q1[0].a1)
+        when (itemSelected) {
+            0 -> {
+                t[itemSelected].currentProgress = progressTest1
+                t[itemSelected].points = currentPointsTest1
+            }
+            1 -> {
+                t[itemSelected].currentProgress = progressTest2
+                t[itemSelected].points = currentPointsTest2
+            }
+            2 -> {
+                t[itemSelected].currentProgress = progressTest3
+                t[itemSelected].points = currentPointsTest3
+            }
+        }
         configQuestion()
+
     }
 
     private fun configQuestion() {
         val isFree = q1[t[itemSelected].currentProgress].type == "free"
         loadQuestion()
         continue_button2.setOnClickListener {
-            if (q1[t[itemSelected].currentProgress].answerUser == null ||  q1[t[itemSelected].currentProgress].answerUser == "")
+            if (q1[t[itemSelected].currentProgress].answerUser == null || q1[t[itemSelected].currentProgress].answerUser == "")
                 if (!isFree)
                     Toast.makeText(
                         this.activity,
@@ -44,11 +70,11 @@ class QuestionFragment : Fragment(R.layout.fragment_question) {
                         Toast.LENGTH_SHORT
                     ).show()
                 else {
-                        Toast.makeText(
-                            this.activity,
-                            "Please fill in the answer field.",
-                            Toast.LENGTH_SHORT
-                        ).show()
+                    Toast.makeText(
+                        this.activity,
+                        "Please fill in the answer field.",
+                        Toast.LENGTH_SHORT
+                    ).show()
                 }
             else {
                 if (t[itemSelected].currentProgress == t[itemSelected].amountQuestions - 1 || t[itemSelected].currentProgress == t[itemSelected].amountQuestions) {
@@ -80,7 +106,23 @@ class QuestionFragment : Fragment(R.layout.fragment_question) {
 
                     }
                     t[itemSelected].currentProgress = t[itemSelected].amountQuestions
+                    when (itemSelected) {
+                        0 -> {
+                            currentPointsTest1 = t[itemSelected].points
+                            test1Done = true
+                        }
+                        1 -> {
+                            currentPointsTest2 = t[itemSelected].points
+                            test2Done = true
+                        }
+
+                        2 -> {
+                            currentPointsTest3 = t[itemSelected].points
+                            test3Done = true
+                        }
+                    }
                     t[itemSelected].done = true
+
                     println(t[itemSelected].points)
                     findNavController().navigate(R.id.nav_results)
                 } else {
@@ -119,7 +161,23 @@ class QuestionFragment : Fragment(R.layout.fragment_question) {
                     q1[t[itemSelected].currentProgress].number =
                         q1[t[itemSelected].currentProgress].number?.plus(1)
                     t[itemSelected].currentProgress++
+                    when (itemSelected) {
+                        0 -> progressTest1++
+                        1 -> progressTest2++
+                        2 -> progressTest3++
+                    }
+                    when (itemSelected) {
+                        0 -> {
+                            currentPointsTest1 = t[itemSelected].points
+                        }
+                        1 -> {
+                            currentPointsTest2 = t[itemSelected].points
+                        }
 
+                        2 -> {
+                            currentPointsTest3 = t[itemSelected].points
+                        }
+                    }
 
                     println(t[itemSelected].currentProgress)
                     loadQuestion()
@@ -468,7 +526,7 @@ class QuestionFragment : Fragment(R.layout.fragment_question) {
                 answer_5.visibility = View.INVISIBLE
                 answer_6.visibility = View.INVISIBLE
                 answer_7.visibility = View.INVISIBLE
-                answer.addTextChangedListener(object: TextWatcher{
+                answer.addTextChangedListener(object : TextWatcher {
                     override fun beforeTextChanged(
                         s: CharSequence?,
                         start: Int,
@@ -871,5 +929,9 @@ class QuestionFragment : Fragment(R.layout.fragment_question) {
         return json
     }
 
+    override fun onDetach() {
+        super.onDetach()
+
+    }
 
 }

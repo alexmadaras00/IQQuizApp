@@ -1,4 +1,5 @@
-package com.example.iqquizapp.DataClasses
+package com.example.iqquizapp.models
+
 
 data class Test(
     var name: String, var description: String, var currentProgress: Int,
@@ -7,3 +8,4 @@ data class Test(
 ) {
 
 }
+

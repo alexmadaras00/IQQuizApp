@@ -1,4 +1,4 @@
-package com.example.iqquizapp
+package com.example.iqquizapp.fragments
 
 import android.os.Bundle
 import android.view.View
@@ -7,6 +7,7 @@ import androidx.navigation.fragment.findNavController
 import com.example.iqquizapp.Global.Companion.ageSelected
 import com.example.iqquizapp.Global.Companion.itemSelected
 import com.example.iqquizapp.Global.Companion.t
+import com.example.iqquizapp.R
 import kotlinx.android.synthetic.main.fragment_results.*
 
 

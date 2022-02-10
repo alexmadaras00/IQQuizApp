@@ -1,10 +1,11 @@
-package com.example.iqquizapp
+package com.example.iqquizapp.activities
 
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.iqquizapp.Global.Companion.logged
+import com.example.iqquizapp.R
 import com.example.iqquizapp.Retrofit.INodeJS
 import com.example.iqquizapp.Retrofit.RetrofitClient
 import com.example.iqquizapp.ui.login.LoginActivity
@@ -27,10 +28,10 @@ class SignUpActivity : AppCompatActivity() {
             startActivity(intent)
         }
         signup.setOnClickListener {
-            register(username.text.toString(), mail.text.toString(), password.text.toString(), phone_number.text.toString())
+            register(email.text.toString(), mail.text.toString(), password.text.toString(), phone_number.text.toString())
             val i = Intent(this, MainActivity::class.java)
             logged = true
-            i.putExtra("username", username.text.toString())
+            i.putExtra("email", email.text.toString())
             startActivity(i)
             finish()
         }

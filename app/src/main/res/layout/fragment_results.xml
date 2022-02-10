@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:background="#E9980B"
     android:paddingBottom="20dp"
-    tools:context=".ResultsFragment">
+    tools:context=".fragments.ResultsFragment">
 
     <Button
         android:id="@+id/continue_button3"

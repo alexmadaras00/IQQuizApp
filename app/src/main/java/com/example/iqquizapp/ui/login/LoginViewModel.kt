@@ -6,7 +6,7 @@ import androidx.lifecycle.ViewModel
 class LoginViewModel() : ViewModel() {
 
 
-    // A placeholder username validation check
+    // A placeholder email validation check
     private fun isUserNameValid(username: String): Boolean {
         return if (username.contains('@')) {
             Patterns.EMAIL_ADDRESS.matcher(username).matches()

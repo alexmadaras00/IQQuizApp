@@ -1,4 +1,4 @@
-package com.example.iqquizapp.DataClasses
+package com.example.iqquizapp.models
 
 data class Question(
     var question: String,

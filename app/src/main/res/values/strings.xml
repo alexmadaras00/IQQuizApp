@@ -121,4 +121,6 @@
     <string name="which_shape_do_you_see_in_the_following_image">Which shape do you see in the following image?</string>
     <string name="a_nrectangle">A.\nRectangle</string>
     <string name="b_ntriangle">B.\nTriangle</string>
+    <string name="forgot_password">Forgot password?</string>
+    <string name="log_in">Log In</string>
 </resources>

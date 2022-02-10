@@ -6,27 +6,27 @@
     app:startDestination="@id/nav_list">
     <fragment
         android:id="@+id/nav_list"
-        android:name="com.example.iqquizapp.ListFragment"
+        android:name="com.example.iqquizapp.fragments.ListFragment"
         android:label="ListFragment"
         tools:layout="@layout/fragment_list" />
     <fragment
         android:id="@+id/nav_age"
-        android:name="com.example.iqquizapp.AgeSelectionFramgent"
+        android:name="com.example.iqquizapp.fragments.AgeSelectionFramgent"
         android:label="fragment_age_selection_fragment"
         tools:layout="@layout/fragment_age_selection_fragment" />
     <fragment
         android:id="@+id/nav_question"
-        android:name="com.example.iqquizapp.QuestionFragment"
+        android:name="com.example.iqquizapp.fragments.QuestionFragment"
         android:label="fragment_question"
         tools:layout="@layout/fragment_question" />
     <fragment
         android:id="@+id/nav_results"
-        android:name="com.example.iqquizapp.ResultsFragment"
+        android:name="com.example.iqquizapp.fragments.ResultsFragment"
         android:label="fragment_results"
         tools:layout="@layout/fragment_results" />
     <activity
         android:id="@+id/loginMenuActivity"
-        android:name="com.example.iqquizapp.LoginMenuActivity"
+        android:name="com.example.iqquizapp.activities.LoginMenuActivity"
         android:label="activity_login_menu"
         tools:layout="@layout/activity_login_menu" />
 </navigation>

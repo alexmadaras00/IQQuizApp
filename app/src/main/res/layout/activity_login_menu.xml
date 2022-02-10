@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#E9980B"
-    tools:context=".LoginMenuActivity">
+    tools:context=".activities.LoginMenuActivity">
 
     <ImageView
         android:id="@+id/logo"
@@ -20,17 +20,18 @@
 
     <Button
         android:id="@+id/login_button"
-        android:layout_width="210dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:elevation="0dp"
         android:fontFamily="sans-serif"
         android:insetTop="0dp"
         android:insetBottom="0dp"
         android:text="Log In"
         app:backgroundTint="#E9980B"
-        android:elevation="0dp"
         app:iconPadding="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintWidth_percent="0.5" />
 
     <androidx.constraintlayout.widget.Barrier
         android:id="@+id/barrier2"

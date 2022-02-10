@@ -1,7 +1,8 @@
-package com.example.iqquizapp
+package com.example.iqquizapp.activities
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.example.iqquizapp.R
 
 class ForgotPasswordActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
