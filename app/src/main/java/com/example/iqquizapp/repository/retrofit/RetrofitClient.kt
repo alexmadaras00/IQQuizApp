@@ -1,15 +1,16 @@
-package com.example.iqquizapp.Retrofit
+package com.example.iqquizapp.repository.retrofit
 
-import com.google.gson.Gson
+import androidx.core.content.ContentProviderCompat.requireContext
+import com.google.firebase.installations.Utils
 import io.reactivex.schedulers.Schedulers
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
-import retrofit2.converter.scalars.ScalarsConverterFactory
 
 class RetrofitClient {
     private lateinit var instance: Retrofit
     fun getInstance(): Retrofit {
+        val port = "2022"
         val rxAdapter = RxJava2CallAdapterFactory.createWithScheduler(Schedulers.io());
         instance = Retrofit.Builder().baseUrl("http://192.168.1.150:2022")
                 .addConverterFactory(GsonConverterFactory.create())

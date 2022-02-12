@@ -36,7 +36,7 @@ android {
 
 dependencies {
 
-    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:1.6.10"
     implementation 'com.android.support:multidex:1.0.3'
     compile 'com.google.code.gson:gson:2.8.6'
     implementation 'androidx.core:core-ktx:1.5.0'
@@ -56,8 +56,8 @@ dependencies {
     implementation platform('com.google.firebase:firebase-bom:28.0.1')
     implementation 'com.google.firebase:firebase-analytics-ktx'
     //RxJava
-    implementation 'io.reactivex.rxjava2:rxandroid:2.0.1'
-    implementation 'io.reactivex.rxjava2:rxjava:2.1.9'
+    implementation 'io.reactivex.rxjava2:rxandroid:2.1.0'
+    implementation 'io.reactivex.rxjava2:rxjava:2.2.21'
     //Retrofit
     implementation 'com.squareup.retrofit2:adapter-rxjava2:2.3.0'
     implementation 'com.squareup.retrofit2:converter-scalars:2.3.0'
@@ -65,10 +65,6 @@ dependencies {
     //Material
     implementation 'com.rengwuxian.materialedittext:library:2.1.4'
     implementation 'com.github.javiersantos:MaterialStyledDialogs:2.1'
-    //Room
-
-
-
 
 
 }

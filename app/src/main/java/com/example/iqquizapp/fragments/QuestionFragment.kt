@@ -1,5 +1,6 @@
 package com.example.iqquizapp.fragments
 
+import Room
 import android.annotation.SuppressLint
 import android.graphics.Color
 import android.os.Build
@@ -7,13 +8,14 @@ import android.text.Editable
 import android.text.TextWatcher
 import android.view.View
 import android.widget.Toast
+import androidx.activity.OnBackPressedCallback
 import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
-import com.example.iqquizapp.Global
 import com.example.iqquizapp.Global.Companion.currentPointsTest1
 import com.example.iqquizapp.Global.Companion.currentPointsTest2
 import com.example.iqquizapp.Global.Companion.currentPointsTest3
+import com.example.iqquizapp.Global.Companion.isGoOffline
 import com.example.iqquizapp.Global.Companion.itemSelected
 import com.example.iqquizapp.Global.Companion.progressTest1
 import com.example.iqquizapp.Global.Companion.progressTest2
@@ -24,6 +26,7 @@ import com.example.iqquizapp.Global.Companion.test1Done
 import com.example.iqquizapp.Global.Companion.test2Done
 import com.example.iqquizapp.Global.Companion.test3Done
 import com.example.iqquizapp.R
+import com.example.iqquizapp.repository.database.User
 import com.example.iqquizapp.models.Question
 import kotlinx.android.synthetic.main.fragment_question.*
 import org.json.JSONException
@@ -33,27 +36,59 @@ import java.util.*
 
 
 class QuestionFragment : Fragment(R.layout.fragment_question) {
+    var user: User? = null
+
     @SuppressLint("NewApi")
     override fun onStart() {
         super.onStart()
+        activity?.onBackPressedDispatcher?.addCallback(this, object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                findNavController().navigate(R.id.nav_list)
+            }
+        })
+
+        val isLoggedIn = Room.getInstance(this.requireContext()).isLoggedIn
+        if (isLoggedIn)
+            user = Room.getInstance(this.requireContext()).user
         println("size: ${q1.size}")
         q1.clear()
         initialize()
         println(q1[0].a1)
-        when (itemSelected) {
-            0 -> {
-                t[itemSelected].currentProgress = progressTest1
-                t[itemSelected].points = currentPointsTest1
+        if (isGoOffline)
+            when (itemSelected) {
+                0 -> {
+                    t[itemSelected].currentProgress = progressTest1
+                    t[itemSelected].points = currentPointsTest1
+                }
+                1 -> {
+                    t[itemSelected].currentProgress = progressTest2
+                    t[itemSelected].points = currentPointsTest2
+                }
+                2 -> {
+                    t[itemSelected].currentProgress = progressTest3
+                    t[itemSelected].points = currentPointsTest3
+                }
             }
-            1 -> {
-                t[itemSelected].currentProgress = progressTest2
-                t[itemSelected].points = currentPointsTest2
+        else
+            when (itemSelected) {
+                0 -> {
+                    t[itemSelected].currentProgress = user?.test1_progress!!
+                    t[itemSelected].points = user?.test1!!
+                    t[itemSelected].done = user?.test1_done!!
+                }
+                1 -> {
+                    t[itemSelected].currentProgress = user?.test2_progress!!
+                    t[itemSelected].points = user?.test2!!
+                    t[itemSelected].done = user?.test2_done!!
+                }
+                2 -> {
+                    t[itemSelected].currentProgress = user?.test3_progress!!
+                    t[itemSelected].points = user?.test3!!
+                    t[itemSelected].done = user?.test3_done!!
+                }
             }
-            2 -> {
-                t[itemSelected].currentProgress = progressTest3
-                t[itemSelected].points = currentPointsTest3
-            }
-        }
+        if(t[itemSelected].done)
+            findNavController().navigate(R.id.nav_results)
         configQuestion()
 
     }
@@ -106,21 +141,39 @@ class QuestionFragment : Fragment(R.layout.fragment_question) {
 
                     }
                     t[itemSelected].currentProgress = t[itemSelected].amountQuestions
-                    when (itemSelected) {
-                        0 -> {
-                            currentPointsTest1 = t[itemSelected].points
-                            test1Done = true
+                    if (isGoOffline)
+                        when (itemSelected) {
+                            0 -> {
+                                currentPointsTest1 = t[itemSelected].points
+                                test1Done = true
+                            }
+                            1 -> {
+                                currentPointsTest2 = t[itemSelected].points
+                                test2Done = true
+                            }
+
+                            2 -> {
+                                currentPointsTest3 = t[itemSelected].points
+                                test3Done = true
+                            }
                         }
-                        1 -> {
-                            currentPointsTest2 = t[itemSelected].points
-                            test2Done = true
+                    else
+                        when (itemSelected) {
+                            0 -> {
+                                user?.test1 = t[itemSelected].points
+                                user?.test1_done = true
+                            }
+                            1 -> {
+                                user?.test2 = t[itemSelected].points
+                                user?.test2_done = true
+                            }
+
+                            2 -> {
+                                user?.test3 = t[itemSelected].points
+                                user?.test3_done = true
+                            }
                         }
 
-                        2 -> {
-                            currentPointsTest3 = t[itemSelected].points
-                            test3Done = true
-                        }
-                    }
                     t[itemSelected].done = true
 
                     println(t[itemSelected].points)
@@ -161,21 +214,45 @@ class QuestionFragment : Fragment(R.layout.fragment_question) {
                     q1[t[itemSelected].currentProgress].number =
                         q1[t[itemSelected].currentProgress].number?.plus(1)
                     t[itemSelected].currentProgress++
-                    when (itemSelected) {
-                        0 -> progressTest1++
-                        1 -> progressTest2++
-                        2 -> progressTest3++
-                    }
-                    when (itemSelected) {
-                        0 -> {
-                            currentPointsTest1 = t[itemSelected].points
-                        }
-                        1 -> {
-                            currentPointsTest2 = t[itemSelected].points
-                        }
 
-                        2 -> {
-                            currentPointsTest3 = t[itemSelected].points
+                    if (isGoOffline) {
+                        when (itemSelected) {
+                            0 -> progressTest1++
+                            1 -> progressTest2++
+                            2 -> progressTest3++
+                        }
+                        when (itemSelected) {
+                            0 -> {
+                                currentPointsTest1 = t[itemSelected].points
+                            }
+                            1 -> {
+                                currentPointsTest2 = t[itemSelected].points
+                            }
+
+                            2 -> {
+                                currentPointsTest3 = t[itemSelected].points
+                            }
+                        }
+                    } else {
+                        when (itemSelected) {
+                            0 -> user?.test1_progress = user?.test1_progress!!.plus(1)
+                            1 -> user?.test2_progress = user?.test2_progress!!.plus(1)
+                            2 -> user?.test3_progress = user?.test3_progress!!.plus(1)
+                        }
+                        when (itemSelected) {
+                            0 -> {
+                                currentPointsTest1 = t[itemSelected].points
+                                user?.test1 = t[itemSelected].points
+                            }
+                            1 -> {
+                                currentPointsTest2 = t[itemSelected].points
+                                user?.test2 = t[itemSelected].points
+                            }
+
+                            2 -> {
+                                currentPointsTest3 = t[itemSelected].points
+                                user?.test3 = t[itemSelected].points
+                            }
                         }
                     }
 
@@ -933,5 +1010,6 @@ class QuestionFragment : Fragment(R.layout.fragment_question) {
         super.onDetach()
 
     }
+
 
 }

@@ -2,7 +2,9 @@ package com.example.iqquizapp.fragments
 
 import Room
 import android.os.Bundle
+import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.iqquizapp.Adapters.AdapterList
 import com.example.iqquizapp.Global.Companion.added
@@ -19,7 +21,7 @@ import com.example.iqquizapp.Global.Companion.test2Done
 import com.example.iqquizapp.Global.Companion.test3Done
 import com.example.iqquizapp.R
 import com.example.iqquizapp.models.Test
-import com.example.iqquizapp.models.User
+import com.example.iqquizapp.repository.database.User
 import kotlinx.android.synthetic.main.fragment_list.*
 import org.json.JSONException
 import org.json.JSONObject
@@ -27,13 +29,25 @@ import java.io.IOException
 
 
 class ListFragment : Fragment(R.layout.fragment_list) {
-    var user : User? = null
+    var user: User? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+
+    }
+
+
+    override fun onStart() {
+        super.onStart()
+        activity?.onBackPressedDispatcher?.addCallback(this, object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                findNavController().navigate(R.id.nav_list)
+            }
+        })
         val isLoggedIn = Room.getInstance(this.requireContext()).isLoggedIn
-        if(isLoggedIn)
-             user = Room.getInstance(this.requireContext()).user
+        if (isLoggedIn)
+            user = Room.getInstance(this.requireContext()).user
         print(user?.test1_progress)
         getJSON()
         if (!added) {
@@ -46,7 +60,7 @@ class ListFragment : Fragment(R.layout.fragment_list) {
                     val name = test.getString("name")
                     val description = test.getString("description")
                     val amountQuestion = test.getInt("amount_question")
-                    val questions = test.getJSONArray("questions")
+
                     if (isLoggedIn) {
                         when (i) {
                             0 -> {
@@ -55,10 +69,10 @@ class ListFragment : Fragment(R.layout.fragment_list) {
                                         name,
                                         description,
                                         user?.test1_progress!!,
-                                        test1Done,
+                                        user?.test1_done!!,
                                         amountQuestion,
                                         q1,
-                                        currentPointsTest1
+                                        user?.test1!!
                                     )
                                 t.add(testDetails)
                             }
@@ -68,10 +82,10 @@ class ListFragment : Fragment(R.layout.fragment_list) {
                                         name,
                                         description,
                                         user?.test2_progress!!,
-                                        test2Done,
+                                        user?.test2_done!!,
                                         amountQuestion,
                                         q1,
-                                        currentPointsTest2
+                                        user?.test2!!
                                     )
                                 t.add(testDetails)
                             }
@@ -81,16 +95,15 @@ class ListFragment : Fragment(R.layout.fragment_list) {
                                         name,
                                         description,
                                         user?.test3_progress!!,
-                                        test3Done,
+                                        user?.test3_done!!,
                                         amountQuestion,
                                         q1,
-                                        currentPointsTest3
+                                        user?.test3!!
                                     )
                                 t.add(testDetails)
                             }
                         }
-                    }
-                    else{
+                    } else {
                         when (i) {
                             0 -> {
                                 val testDetails =
@@ -140,16 +153,10 @@ class ListFragment : Fragment(R.layout.fragment_list) {
             }
             added = true
         }
-    }
-
-
-    override fun onStart() {
-        super.onStart()
-
+        print(t)
         recyclerView.layoutManager = LinearLayoutManager(this.activity)
         recyclerView.adapter = AdapterList(t)
         recyclerView.isNestedScrollingEnabled = true
-
     }
 
     override fun onResume() {

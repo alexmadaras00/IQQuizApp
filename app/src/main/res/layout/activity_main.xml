@@ -52,6 +52,19 @@
                     app:srcCompat="@drawable/logout_black_24dp" />
 
                 <ImageView
+                    android:id="@+id/ivLogin"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:visibility="visible"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:layout_marginEnd="16dp"
+                    app:srcCompat="@drawable/outline_login_black_24dp"
+                    app:tint="@color/white"
+                    android:layout_marginRight="20dp" />
+
+                <ImageView
                     android:id="@+id/back_button"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -68,7 +81,7 @@
                     android:layout_marginStart="16dp"
                     android:layout_marginLeft="16dp"
                     android:fontFamily="@font/lato"
-                    android:text="Name"
+                    android:text="@string/name"
                     android:textColor="#FFFFFF"
                     android:textSize="24sp"
                     app:layout_constraintBottom_toBottomOf="parent"

@@ -2,6 +2,7 @@ package com.example.iqquizapp.ui.login
 
 import Room
 import android.content.Intent
+import android.net.wifi.WifiManager
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
@@ -9,13 +10,13 @@ import android.widget.Toast
 import androidx.annotation.StringRes
 import androidx.appcompat.app.AppCompatActivity
 import com.example.iqquizapp.Global
-import com.example.iqquizapp.activities.ForgotPasswordActivity
 import com.example.iqquizapp.Global.Companion.logged
-import com.example.iqquizapp.activities.MainActivity
 import com.example.iqquizapp.R
-import com.example.iqquizapp.Retrofit.INodeJS
-import com.example.iqquizapp.Retrofit.RetrofitClient
+import com.example.iqquizapp.activities.ForgotPasswordActivity
+import com.example.iqquizapp.activities.MainActivity
 import com.example.iqquizapp.activities.SignUpActivity
+import com.example.iqquizapp.repository.retrofit.INodeJS
+import com.example.iqquizapp.repository.retrofit.RetrofitClient
 import com.google.android.material.textfield.TextInputEditText
 import io.reactivex.disposables.CompositeDisposable
 import kotlinx.android.synthetic.main.activity_login.*
@@ -23,6 +24,11 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import retrofit2.Retrofit
+import java.math.BigInteger
+import java.net.InetAddress
+import java.net.UnknownHostException
+import java.nio.ByteOrder
+
 
 class LoginActivity : AppCompatActivity() {
 
@@ -42,8 +48,8 @@ class LoginActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         setContentView(R.layout.activity_login)
+
         val retrofit: Retrofit = RetrofitClient().getInstance()
         myAPI = retrofit.create(INodeJS::class.java)
         val email = findViewById<TextInputEditText>(R.id.email)
@@ -68,8 +74,8 @@ class LoginActivity : AppCompatActivity() {
             )
             val emailVerified: Boolean = validateInput.validateEmail()
             val passVerified: Boolean = validateInput.validatePassword()
-            println("Mail:" + emailVerified)
-            println("Pass:" + passVerified)
+            println("Mail:$emailVerified")
+            println("Pass:$passVerified")
             if (emailVerified && passVerified) {
                 val mail = email.text.toString().trim()
                 val pass = password.text.toString().trim()
@@ -89,16 +95,14 @@ class LoginActivity : AppCompatActivity() {
             ) {
                 if (response.isSuccessful) {
                     Room.getInstance(applicationContext).saveUser(response.body()?.user!!)
-                    if(Room.getInstance(applicationContext).user.username != "null" ) {
+                    if (Room.getInstance(applicationContext).user.username != "null") {
                         Global.isGoOffline = false
                         val i = Intent(applicationContext, MainActivity::class.java)
                         i.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
                         logged = true
                         startActivity(i)
-                    }
-                    else toast("Invalid credentials. Please try again.")
-                }
-                else if(response.code()==401) toast("Session expired! Try again!")
+                    } else toast("Invalid credentials. Please try again.")
+                } else if (response.code() == 401) toast("Session expired! Try again!")
                 else toast("Wrong e-mail or password!")
             }
 
@@ -136,12 +140,26 @@ class LoginActivity : AppCompatActivity() {
 
     override fun onStart() {
         super.onStart()
-        if(Room.getInstance(this).isLoggedIn){
+        if (Room.getInstance(this).isLoggedIn) {
             val i = Intent(applicationContext, MainActivity::class.java)
             i.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
             logged = true
             startActivity(i)
         }
+    }
+    private fun getLocalWifiIpAddress(): String? {
+        val wifiManager = applicationContext.getSystemService(WIFI_SERVICE) as WifiManager
+        var ipAddress = wifiManager.connectionInfo.ipAddress
+        if (ByteOrder.nativeOrder().equals(ByteOrder.LITTLE_ENDIAN)) {
+            ipAddress = Integer.reverseBytes(ipAddress)
+        }
+        val ipByteArray: ByteArray = BigInteger.valueOf(ipAddress.toLong()).toByteArray()
+        val ipAddressString: String? = try {
+            InetAddress.getByAddress(ipByteArray).hostAddress
+        } catch (ex: UnknownHostException) {
+            null
+        }
+        return ipAddressString
     }
 }
 

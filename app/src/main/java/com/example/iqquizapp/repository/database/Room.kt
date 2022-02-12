@@ -1,5 +1,5 @@
 import android.content.Context
-import com.example.iqquizapp.models.User
+import com.example.iqquizapp.repository.database.User
 
 
 class Room private constructor(private val context: Context) {
@@ -23,6 +23,9 @@ class Room private constructor(private val context: Context) {
                 data.getInt("test1_progress", -1),
                 data.getInt("test2_progress", -1),
                 data.getInt("test3_progress", -1),
+                data.getBoolean("test1_done", false),
+                data.getBoolean("test2_done", false),
+                data.getBoolean("test3_done", false)
             )
         }
 
@@ -41,6 +44,10 @@ class Room private constructor(private val context: Context) {
         editor.putInt("test1_progress", user.test1_progress)
         editor.putInt("test2_progress", user.test2_progress)
         editor.putInt("test3_progress", user.test3_progress)
+        editor.putBoolean("test1_done", user.test1_done)
+        editor.putBoolean("test2_done", user.test2_done)
+        editor.putBoolean("test3_done", user.test3_done)
+
 
         editor.apply()
     }
@@ -53,7 +60,7 @@ class Room private constructor(private val context: Context) {
     }
 
     companion object {
-        private val SHARED_PREF_NAME = "user_pref"
+        private const val SHARED_PREF_NAME = "user_pref"
         var mInstance: Room? = null
 
         @Synchronized

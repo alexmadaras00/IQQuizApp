@@ -123,4 +123,5 @@
     <string name="b_ntriangle">B.\nTriangle</string>
     <string name="forgot_password">Forgot password?</string>
     <string name="log_in">Log In</string>
+    <string name="name">Name</string>
 </resources>

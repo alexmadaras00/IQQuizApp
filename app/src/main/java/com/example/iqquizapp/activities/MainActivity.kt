@@ -34,13 +34,17 @@ class MainActivity : AppCompatActivity() {
                 val navController = findNavController(R.id.navHostFragment)
                 if (logged) {
                     ivLogout.visibility = View.VISIBLE
+                    ivLogin.visibility = View.INVISIBLE
                     ivLogout.setOnClickListener {
                         Room.getInstance(this).clear()
                         logged = false
                         val intent = Intent(this, LoginMenuActivity::class.java)
                         startActivity(intent)
                     }
-                } else ivLogout.visibility = View.INVISIBLE
+                } else {
+                    ivLogin.visibility = View.VISIBLE
+                    ivLogout.visibility = View.INVISIBLE
+                }
                 navController.addOnDestinationChangedListener { _, _, _ ->
                     if (navController.currentDestination?.id == R.id.nav_age) {
                         name.visibility = View.INVISIBLE
@@ -56,6 +60,11 @@ class MainActivity : AppCompatActivity() {
             val guestText = "Guest"
             name.text = guestText
             ivLogout.visibility = View.INVISIBLE
+            ivLogin.visibility = View.VISIBLE
+            ivLogin.setOnClickListener {
+                val intent = Intent(this, LoginActivity::class.java)
+                startActivity(intent)
+            }
             val navController = findNavController(R.id.navHostFragment)
             navController.addOnDestinationChangedListener { _, _, _ ->
                 if (navController.currentDestination?.id == R.id.nav_age) {
