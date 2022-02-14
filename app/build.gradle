@@ -36,7 +36,7 @@ android {
 
 dependencies {
 
-    implementation "org.jetbrains.kotlin:kotlin-stdlib:1.6.10"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:1.4.32"
     implementation 'com.android.support:multidex:1.0.3'
     compile 'com.google.code.gson:gson:2.8.6'
     implementation 'androidx.core:core-ktx:1.5.0'

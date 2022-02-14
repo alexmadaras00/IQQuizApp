@@ -25,7 +25,6 @@ class MainActivity : AppCompatActivity() {
             ivLogout.visibility = View.VISIBLE
             if (!Room.getInstance(this).isLoggedIn) {
                 val i = Intent(applicationContext, LoginActivity::class.java)
-                i.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
                 logged = false
                 startActivity(i)
             } else {

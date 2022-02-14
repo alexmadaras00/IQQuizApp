@@ -10,9 +10,9 @@ import retrofit2.converter.gson.GsonConverterFactory
 class RetrofitClient {
     private lateinit var instance: Retrofit
     fun getInstance(): Retrofit {
-        val port = "2022"
+        val port = "20222"
         val rxAdapter = RxJava2CallAdapterFactory.createWithScheduler(Schedulers.io());
-        instance = Retrofit.Builder().baseUrl("http://192.168.1.150:2022")
+        instance = Retrofit.Builder().baseUrl("http://192.168.1.150:20222")
                 .addConverterFactory(GsonConverterFactory.create())
                 .addCallAdapterFactory(rxAdapter)
                 .build()

@@ -377,14 +377,14 @@
         },
         {
           "text": "Introduceti un cuvatn care sa insemne acelasi lucru ca si cuvintele din afara parentezelor.\n\nMONEDA(....) INSTRUMENT MUZICAL",
-          "type": "onechoice",
+          "type": "free",
           "image": "draw",
           "r": "Lira",
           "weight_r": 10
         },
         {
           "text": "Rezolvati urmatoarea anagrama pentru a descoperi un cuvant.\n\nALB MACI",
-          "type": "onechoice",
+          "type": "free",
           "image": "draw",
           "r": "Alambic",
           "weight_r": 10
@@ -412,8 +412,8 @@
           "text": "Ce numar ar trebui sa inlocuiasca semnul de intrebare?\n\n61, 54, 622, ?, 63, 56, 64",
           "type": "free",
           "image": "draw",
-          "r1": "55",
-          "weight_r": 0
+          "r": "55",
+          "weight_r": 10
         },
         {
           "text": "Ce este un CHIBIT?",
@@ -434,18 +434,8 @@
           "text": "Combinati 2 segmente din 3 litere pentru a afla denumirea unui copac.\n\nCAS-CHE-ACA-RRI-HER-CIA-AND-ALM",
           "type": "free",
           "image": "draw",
-          "r1": "30",
-          "r2": "40",
-          "r3": "14",
-          "r4": "22",
-          "r5": "24",
-          "r6": "28",
-          "weight_r1": 0,
-          "weight_r2": 0,
-          "weight_r3": 0,
-          "weight_r4": 10,
-          "weight_r5": 0,
-          "weight_r6": 0
+          "r": "ACACIA",
+          "weight_r": 10
         },
         {
           "text": "Inlocuiti punctele cu un cuvant pentru a forma 5 cuvinte noi",
@@ -471,7 +461,7 @@
         },
         {
           "text": "Care dintre urmatoarele cuvinte au acelasi sens?\n\nFLASC, SCAPARATOR, INSELATOR, INFLUENT, VITAL, STRALUCITOR",
-          "type": "onechoice-5",
+          "type": "onechoice",
           "image": "draw",
           "r1": "FLASC,STRALUCITOR",
           "r2": "INSELATOR,SCAPARATOR",
@@ -489,6 +479,7 @@
         {
           "text": "Completati spatiile goale, in sensul sau contrar acelor de ceasornic, pentru a forma 2 cuvinte sinonime.",
           "type": "free",
+          "image": "null",
           "r": "Ridicoli, rizibili",
           "weight_r": 10
         },

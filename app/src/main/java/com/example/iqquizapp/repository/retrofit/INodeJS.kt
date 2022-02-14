@@ -5,6 +5,7 @@ import retrofit2.Call
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
 import retrofit2.http.POST
+import retrofit2.http.PUT
 
 interface INodeJS {
     @POST("/register/")
@@ -22,6 +23,39 @@ interface INodeJS {
         @Field("email") email: String,
         @Field("password") password: String
     ): Call<LoginResponse>
+
+    @POST("/")
+    @FormUrlEncoded
+    fun getDataUser(
+        @Field("id") id: Int,
+    ): Call<LoginResponse>
+
+    @PUT("/updateTest1/")
+    @FormUrlEncoded
+    fun updateTest1(
+        @Field("id") id: Int,
+        @Field("progress") progress: Int,
+        @Field("points") points: Int,
+        @Field("done") done: Boolean
+    ):Call<String>
+
+    @PUT("/updateTest2/")
+    @FormUrlEncoded
+    fun updateTest2(
+        @Field("id") id: Int,
+        @Field("progress") progress: Int,
+        @Field("points") points: Int,
+        @Field("done") done: Boolean
+    ):Call<String>
+
+    @PUT("/updateTest3/")
+    @FormUrlEncoded
+    fun updateTest3(
+        @Field("id") id: Int,
+        @Field("progress") progress: Int,
+        @Field("points") points: Int,
+        @Field("done") done: Boolean
+    ):Call<String>
 
 
 }

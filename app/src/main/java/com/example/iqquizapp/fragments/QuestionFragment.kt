@@ -12,6 +12,7 @@ import androidx.activity.OnBackPressedCallback
 import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import com.example.iqquizapp.Global
 import com.example.iqquizapp.Global.Companion.currentPointsTest1
 import com.example.iqquizapp.Global.Companion.currentPointsTest2
 import com.example.iqquizapp.Global.Companion.currentPointsTest3
@@ -26,34 +27,47 @@ import com.example.iqquizapp.Global.Companion.test1Done
 import com.example.iqquizapp.Global.Companion.test2Done
 import com.example.iqquizapp.Global.Companion.test3Done
 import com.example.iqquizapp.R
-import com.example.iqquizapp.repository.database.User
 import com.example.iqquizapp.models.Question
+import com.example.iqquizapp.repository.database.User
+import com.example.iqquizapp.repository.retrofit.INodeJS
+import com.example.iqquizapp.repository.retrofit.RetrofitClient
+import com.example.iqquizapp.ui.login.LoginResponse
+import io.reactivex.disposables.CompositeDisposable
 import kotlinx.android.synthetic.main.fragment_question.*
 import org.json.JSONException
 import org.json.JSONObject
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
+import retrofit2.Retrofit
 import java.io.IOException
 import java.util.*
 
 
 class QuestionFragment : Fragment(R.layout.fragment_question) {
+
     var user: User? = null
+    private val compositeDisposable = CompositeDisposable()
+    private lateinit var myAPI: INodeJS
 
     @SuppressLint("NewApi")
     override fun onStart() {
         super.onStart()
+
+        val isLoggedIn = Room.getInstance(this.requireContext()).isLoggedIn
+        val retrofit: Retrofit = RetrofitClient().getInstance()
+        myAPI = retrofit.create(INodeJS::class.java)
         activity?.onBackPressedDispatcher?.addCallback(this, object : OnBackPressedCallback(true) {
             override fun handleOnBackPressed() {
+                updateData()
                 findNavController().navigate(R.id.nav_list)
             }
         })
-
-        val isLoggedIn = Room.getInstance(this.requireContext()).isLoggedIn
         if (isLoggedIn)
             user = Room.getInstance(this.requireContext()).user
         println("size: ${q1.size}")
         q1.clear()
-        initialize()
-        println(q1[0].a1)
+
         if (isGoOffline)
             when (itemSelected) {
                 0 -> {
@@ -69,31 +83,57 @@ class QuestionFragment : Fragment(R.layout.fragment_question) {
                     t[itemSelected].points = currentPointsTest3
                 }
             }
-        else
+        else {
             when (itemSelected) {
                 0 -> {
                     t[itemSelected].currentProgress = user?.test1_progress!!
                     t[itemSelected].points = user?.test1!!
                     t[itemSelected].done = user?.test1_done!!
+                    updateTest1SQL(
+                        user?.id!!,
+                        user?.test1_progress!!,
+                        t[itemSelected].points,
+                        t[itemSelected].done
+                    )
                 }
                 1 -> {
                     t[itemSelected].currentProgress = user?.test2_progress!!
                     t[itemSelected].points = user?.test2!!
                     t[itemSelected].done = user?.test2_done!!
+                    updateTest2SQL(
+                        user?.id!!,
+                        user?.test2_progress!!,
+                        t[itemSelected].points,
+                        t[itemSelected].done
+                    )
                 }
                 2 -> {
                     t[itemSelected].currentProgress = user?.test3_progress!!
                     t[itemSelected].points = user?.test3!!
                     t[itemSelected].done = user?.test3_done!!
+                    updateTest3SQL(
+                        user?.id!!,
+                        user?.test3_progress!!,
+                        t[itemSelected].points,
+                        t[itemSelected].done
+                    )
                 }
+
             }
-        if(t[itemSelected].done)
+
+        }
+        if (t[itemSelected].done)
             findNavController().navigate(R.id.nav_results)
         configQuestion()
 
     }
 
+
+    @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
     private fun configQuestion() {
+        initJSON()
+        println("Size q: ${q1.size}")
+        println("Size t: ${t.size}")
         val isFree = q1[t[itemSelected].currentProgress].type == "free"
         loadQuestion()
         continue_button2.setOnClickListener {
@@ -157,23 +197,44 @@ class QuestionFragment : Fragment(R.layout.fragment_question) {
                                 test3Done = true
                             }
                         }
-                    else
+                    else {
                         when (itemSelected) {
                             0 -> {
                                 user?.test1 = t[itemSelected].points
                                 user?.test1_done = true
+                                updateTest1SQL(
+                                    user?.id!!,
+                                    user?.test1_progress!!,
+                                    t[itemSelected].points,
+                                    t[itemSelected].done
+                                )
+
                             }
                             1 -> {
                                 user?.test2 = t[itemSelected].points
                                 user?.test2_done = true
+                                updateTest2SQL(
+                                    user?.id!!,
+                                    t[itemSelected].points,
+                                    user?.test2_progress!!,
+                                    t[itemSelected].done
+                                )
                             }
 
                             2 -> {
                                 user?.test3 = t[itemSelected].points
                                 user?.test3_done = true
+
+                                updateTest3SQL(
+                                    user?.id!!,
+                                    user?.test3_progress!!,
+                                    t[itemSelected].points,
+                                    t[itemSelected].done
+                                )
                             }
                         }
 
+                    }
                     t[itemSelected].done = true
 
                     println(t[itemSelected].points)
@@ -235,25 +296,42 @@ class QuestionFragment : Fragment(R.layout.fragment_question) {
                         }
                     } else {
                         when (itemSelected) {
-                            0 -> user?.test1_progress = user?.test1_progress!!.plus(1)
-                            1 -> user?.test2_progress = user?.test2_progress!!.plus(1)
-                            2 -> user?.test3_progress = user?.test3_progress!!.plus(1)
-                        }
-                        when (itemSelected) {
                             0 -> {
                                 currentPointsTest1 = t[itemSelected].points
                                 user?.test1 = t[itemSelected].points
+                                user?.test1_progress = user?.test1_progress!!.plus(1)
+                                updateTest1SQL(
+                                    user?.id!!,
+                                    user?.test1_progress!!,
+                                    t[itemSelected].points,
+                                    t[itemSelected].done!!
+                                )
                             }
                             1 -> {
                                 currentPointsTest2 = t[itemSelected].points
                                 user?.test2 = t[itemSelected].points
+                                user?.test2_progress = user?.test2_progress!!.plus(1)
+                                updateTest2SQL(
+                                    user?.id!!,
+                                    user?.test2_progress!!,
+                                    t[itemSelected].points,
+                                    t[itemSelected].done!!
+                                )
                             }
 
                             2 -> {
                                 currentPointsTest3 = t[itemSelected].points
                                 user?.test3 = t[itemSelected].points
+                                user?.test3_progress = user?.test3_progress!!.plus(1)
+                                updateTest3SQL(
+                                    user?.id!!,
+                                    user?.test1_progress!!,
+                                    t[itemSelected].points,
+                                    t[itemSelected].done!!
+                                )
                             }
                         }
+
                     }
 
                     println(t[itemSelected].currentProgress)
@@ -638,7 +716,7 @@ class QuestionFragment : Fragment(R.layout.fragment_question) {
     }
 
     @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
-    private fun initialize() = try {
+    private fun initJSON() = try {
         getJSON()
         val array = JSONObject(getJSON()!!).getJSONArray("tests")
         println("amount of tests: ${array.length()}")
@@ -817,7 +895,8 @@ class QuestionFragment : Fragment(R.layout.fragment_question) {
                                     a3,
                                     a4,
                                     a5,
-                                    a6, a7,
+                                    a6,
+                                    a7,
                                     j + 1,
                                     resourceId,
                                     null
@@ -839,7 +918,8 @@ class QuestionFragment : Fragment(R.layout.fragment_question) {
                                     a3,
                                     a4,
                                     a5,
-                                    a6, a7,
+                                    a6,
+                                    a7,
                                     j + 1,
                                     0,
                                     null
@@ -981,6 +1061,7 @@ class QuestionFragment : Fragment(R.layout.fragment_question) {
                             }
                         }
                     }
+
                 }
                 break
             }
@@ -1011,5 +1092,118 @@ class QuestionFragment : Fragment(R.layout.fragment_question) {
 
     }
 
+    override fun onStop() {
+        super.onStop()
+        compositeDisposable.clear()
+    }
 
+    override fun onDestroy() {
+        super.onDestroy()
+        compositeDisposable.clear()
+    }
+
+    private fun updateTest1SQL(id: Int, progress: Int, points: Int, done: Boolean) {
+        myAPI.updateTest1(id, progress, points, done).enqueue(object : retrofit2.Callback<String> {
+            override fun onResponse(call: retrofit2.Call<String>, response: Response<String>) {
+                if (response.isSuccessful)
+                    Toast.makeText(
+                        requireActivity().applicationContext,
+                        response.message(),
+                        Toast.LENGTH_SHORT
+                    ).show()
+                else Toast.makeText(
+                    requireActivity().applicationContext,
+                    "Failed to update the data",
+                    Toast.LENGTH_SHORT
+                ).show()
+            }
+
+            override fun onFailure(call: retrofit2.Call<String>, t: Throwable) {
+                Toast.makeText(requireActivity().applicationContext, t.message, Toast.LENGTH_SHORT)
+                    .show()
+            }
+
+        })
+    }
+
+    private fun updateTest2SQL(id: Int, progress: Int, points: Int, done: Boolean) {
+        myAPI.updateTest3(id, progress, points, done).enqueue(object : retrofit2.Callback<String> {
+            override fun onResponse(call: retrofit2.Call<String>, response: Response<String>) {
+                if (response.isSuccessful)
+                    Toast.makeText(
+                        requireActivity().applicationContext,
+                        response.message(),
+                        Toast.LENGTH_SHORT
+                    ).show()
+                else Toast.makeText(
+                    requireActivity().applicationContext,
+                    "Failed to update the data",
+                    Toast.LENGTH_SHORT
+                ).show()
+            }
+
+            override fun onFailure(call: retrofit2.Call<String>, t: Throwable) {
+                Toast.makeText(requireActivity().applicationContext, t.message, Toast.LENGTH_SHORT)
+                    .show()
+            }
+
+        })
+    }
+
+    private fun updateTest3SQL(id: Int, progress: Int, points: Int, done: Boolean) {
+        myAPI.updateTest3(id, progress, points, done).enqueue(object : retrofit2.Callback<String> {
+            override fun onResponse(call: retrofit2.Call<String>, response: Response<String>) {
+                if (response.isSuccessful)
+                    Toast.makeText(
+                        requireActivity().applicationContext,
+                        response.message(),
+                        Toast.LENGTH_SHORT
+                    ).show()
+                else Toast.makeText(
+                    requireActivity().applicationContext,
+                    "Failed to update the data",
+                    Toast.LENGTH_SHORT
+                ).show()
+            }
+
+            override fun onFailure(call: retrofit2.Call<String>, t: Throwable) {
+                Toast.makeText(requireActivity().applicationContext, t.message, Toast.LENGTH_SHORT)
+                    .show()
+            }
+
+        })
+    }
+    private fun updateData() {
+        val isLoggedIn = Room.getInstance(this.requireContext()).isLoggedIn
+        if(isLoggedIn)
+            user = Room.getInstance(this.requireContext()).user
+
+        myAPI.getDataUser(user?.id!!).enqueue(object : Callback<LoginResponse> {
+            override fun onResponse(
+                call: Call<LoginResponse>,
+                response: Response<LoginResponse>
+            ) {
+                if (response.isSuccessful) {
+                    Room.getInstance(requireContext())
+                        .saveUser(response.body()?.user!!)
+                    if (Room.getInstance(requireContext()).user.username != "null") {
+
+                        Global.isGoOffline = false
+                    } else toast("Null username")
+                } else if (response.code() == 401) toast("Session expired! Try again!")
+                else toast("Could not retreive e-mail and password!")
+            }
+
+            override fun onFailure(call: Call<LoginResponse>, t: Throwable) {
+                Toast.makeText(requireContext(), t.message, Toast.LENGTH_SHORT)
+                    .show()
+            }
+
+        })
+
+    }
+
+    private fun toast(s: String) {
+        Toast.makeText(requireContext(), s, Toast.LENGTH_SHORT).show()
+    }
 }
