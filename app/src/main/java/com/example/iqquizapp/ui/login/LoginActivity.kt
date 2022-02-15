@@ -101,6 +101,7 @@ class LoginActivity : AppCompatActivity() {
                         i.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
                         logged = true
                         startActivity(i)
+                        finish()
                     } else toast("Invalid credentials. Please try again.")
                 } else if (response.code() == 401) toast("Session expired! Try again!")
                 else toast("Wrong e-mail or password!")
@@ -147,6 +148,7 @@ class LoginActivity : AppCompatActivity() {
             startActivity(i)
         }
     }
+
     private fun getLocalWifiIpAddress(): String? {
         val wifiManager = applicationContext.getSystemService(WIFI_SERVICE) as WifiManager
         var ipAddress = wifiManager.connectionInfo.ipAddress

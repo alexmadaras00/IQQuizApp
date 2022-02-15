@@ -3,6 +3,8 @@ package com.example.iqquizapp.fragments
 import Room
 import android.annotation.SuppressLint
 import android.graphics.Color
+import android.graphics.drawable.BitmapDrawable
+import android.graphics.drawable.Drawable
 import android.os.Build
 import android.text.Editable
 import android.text.TextWatcher
@@ -12,6 +14,7 @@ import androidx.activity.OnBackPressedCallback
 import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import com.example.iqquizapp.Adapters.AdapterList
 import com.example.iqquizapp.Global
 import com.example.iqquizapp.Global.Companion.currentPointsTest1
 import com.example.iqquizapp.Global.Companion.currentPointsTest2
@@ -33,6 +36,7 @@ import com.example.iqquizapp.repository.retrofit.INodeJS
 import com.example.iqquizapp.repository.retrofit.RetrofitClient
 import com.example.iqquizapp.ui.login.LoginResponse
 import io.reactivex.disposables.CompositeDisposable
+import kotlinx.android.synthetic.main.fragment_list.*
 import kotlinx.android.synthetic.main.fragment_question.*
 import org.json.JSONException
 import org.json.JSONObject
@@ -53,20 +57,28 @@ class QuestionFragment : Fragment(R.layout.fragment_question) {
     @SuppressLint("NewApi")
     override fun onStart() {
         super.onStart()
-
+      
         val isLoggedIn = Room.getInstance(this.requireContext()).isLoggedIn
         val retrofit: Retrofit = RetrofitClient().getInstance()
         myAPI = retrofit.create(INodeJS::class.java)
-        activity?.onBackPressedDispatcher?.addCallback(this, object : OnBackPressedCallback(true) {
-            override fun handleOnBackPressed() {
-                updateData()
-                findNavController().navigate(R.id.nav_list)
-            }
-        })
         if (isLoggedIn)
             user = Room.getInstance(this.requireContext()).user
         println("size: ${q1.size}")
         q1.clear()
+        activity?.onBackPressedDispatcher?.addCallback(this, object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                if (isLoggedIn) {
+                    q1.clear()
+                    updateData()
+                    AdapterList(t).notifyDataSetChanged()
+                    AdapterList(t).addNewStatutes(t)
+
+                }
+                findNavController().navigate(R.id.nav_list)
+            }
+        })
+
+
 
         if (isGoOffline)
             when (itemSelected) {
@@ -178,6 +190,8 @@ class QuestionFragment : Fragment(R.layout.fragment_question) {
                         ) {
                             t[itemSelected].points += q1[t[itemSelected].currentProgress].a1_weight
                         } else t[itemSelected].points += 0
+                        type_answer.clearComposingText()
+                        type_answer.text=""
 
                     }
                     t[itemSelected].currentProgress = t[itemSelected].amountQuestions
@@ -275,6 +289,8 @@ class QuestionFragment : Fragment(R.layout.fragment_question) {
                     q1[t[itemSelected].currentProgress].number =
                         q1[t[itemSelected].currentProgress].number?.plus(1)
                     t[itemSelected].currentProgress++
+                    type_answer.clearComposingText()
+                    type_answer.text=""
 
                     if (isGoOffline) {
                         when (itemSelected) {
@@ -335,6 +351,8 @@ class QuestionFragment : Fragment(R.layout.fragment_question) {
                     }
 
                     println(t[itemSelected].currentProgress)
+                    type_answer.clearComposingText()
+                    type_answer.text=""
                     loadQuestion()
                 }
             }
@@ -342,6 +360,8 @@ class QuestionFragment : Fragment(R.layout.fragment_question) {
     }
 
     private fun loadQuestion() {
+        type_answer.clearComposingText()
+        type_answer.text=""
         "${q1[t[itemSelected].currentProgress].number}/${t[itemSelected].amountQuestions}".also {
             progress_questions.text = it
         }
@@ -670,6 +690,7 @@ class QuestionFragment : Fragment(R.layout.fragment_question) {
             }
             "free" -> {
                 type_answer.visibility = View.VISIBLE
+
                 answer.visibility = View.VISIBLE
                 println(t[itemSelected].currentProgress)
                 answer_1.visibility = View.INVISIBLE

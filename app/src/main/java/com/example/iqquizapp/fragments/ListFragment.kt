@@ -73,20 +73,28 @@ class ListFragment : Fragment(R.layout.fragment_list) {
         val isLoggedIn = Room.getInstance(this.requireContext()).isLoggedIn
         if (isLoggedIn) {
             updateData()
+            AdapterList(t).notifyDataSetChanged()
+            AdapterList(t).addNewStatutes(t)
             user = Room.getInstance(this.requireContext()).user
         }
         print(user?.test1_progress)
+
         initialize()
         print(t)
         recyclerView.layoutManager = LinearLayoutManager(this.activity)
         recyclerView.adapter = AdapterList(t)
-        AdapterList(t).notifyDataSetChanged()
+        recyclerView.smoothScrollToPosition(0)
+        AdapterList(t).addNewStatutes(t)
         recyclerView.isNestedScrollingEnabled = true
     }
 
 
-
     private fun initialize() {
+        recyclerView.layoutManager = LinearLayoutManager(this.activity)
+        recyclerView.adapter = AdapterList(t)
+        recyclerView.smoothScrollToPosition(0)
+        AdapterList(t).notifyDataSetChanged()
+        AdapterList(t).addNewStatutes(t)
         val isLoggedIn = Room.getInstance(this.requireContext()).isLoggedIn
         if (isLoggedIn)
             user = Room.getInstance(this.requireContext()).user
@@ -96,6 +104,7 @@ class ListFragment : Fragment(R.layout.fragment_list) {
                 val array = JSONObject(getJSON()!!).getJSONArray("tests")
                 println(array.length())
                 q1.clear()
+                t.clear()
                 for (i in 0 until array.length()) {
                     val test = array.getJSONObject(i)
                     val name = test.getString("name")
@@ -122,7 +131,7 @@ class ListFragment : Fragment(R.layout.fragment_list) {
                                     Test(
                                         name,
                                         description,
-                                        user?.test2_progress!!-1,
+                                        user?.test2_progress!! - 1,
                                         user?.test2_done!!,
                                         amountQuestion,
                                         q1,
@@ -208,12 +217,16 @@ class ListFragment : Fragment(R.layout.fragment_list) {
             user = Room.getInstance(this.requireContext()).user
             print(user?.test1_progress)
             updateData()
+            AdapterList(t).notifyDataSetChanged()
+            AdapterList(t).addNewStatutes(t)
         }
         initialize()
         print(t)
         recyclerView.layoutManager = LinearLayoutManager(this.activity)
         recyclerView.adapter = AdapterList(t)
         AdapterList(t).notifyDataSetChanged()
+        recyclerView.smoothScrollToPosition(0)
+        AdapterList(t).addNewStatutes(t)
         recyclerView.isNestedScrollingEnabled = true
     }
 
@@ -234,9 +247,10 @@ class ListFragment : Fragment(R.layout.fragment_list) {
         }
         return json
     }
+
     private fun updateData() {
         val isLoggedIn = Room.getInstance(this.requireContext()).isLoggedIn
-        if(isLoggedIn)
+        if (isLoggedIn)
             user = Room.getInstance(this.requireContext()).user
 
         myAPI.getDataUser(user?.id!!).enqueue(object : Callback<LoginResponse> {

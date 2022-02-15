@@ -1,12 +1,12 @@
 package com.example.iqquizapp.Adapters
 
+import Room
 import android.annotation.SuppressLint
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.navigation.Navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.iqquizapp.Global
@@ -23,7 +23,7 @@ import retrofit2.Response
 import retrofit2.Retrofit
 import java.util.*
 
-class AdapterList(val t: ArrayList<Test>) : RecyclerView.Adapter<AdapterList.ViewHolder>() {
+class AdapterList(var t: ArrayList<Test>) : RecyclerView.Adapter<AdapterList.ViewHolder>() {
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AdapterList.ViewHolder {
@@ -112,4 +112,9 @@ class AdapterList(val t: ArrayList<Test>) : RecyclerView.Adapter<AdapterList.Vie
     private fun toast(s: String, context: Context) {
         Toast.makeText(context, s, Toast.LENGTH_SHORT).show()
     }
+    fun addNewStatutes(tests: ArrayList<Test>) {
+        tests.addAll(tests)
+        notifyDataSetChanged()
+    }
+
 }

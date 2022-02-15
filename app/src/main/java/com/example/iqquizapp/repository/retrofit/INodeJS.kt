@@ -37,7 +37,7 @@ interface INodeJS {
         @Field("progress") progress: Int,
         @Field("points") points: Int,
         @Field("done") done: Boolean
-    ):Call<String>
+    ): Call<String>
 
     @PUT("/updateTest2/")
     @FormUrlEncoded
@@ -46,7 +46,7 @@ interface INodeJS {
         @Field("progress") progress: Int,
         @Field("points") points: Int,
         @Field("done") done: Boolean
-    ):Call<String>
+    ): Call<String>
 
     @PUT("/updateTest3/")
     @FormUrlEncoded
@@ -55,7 +55,7 @@ interface INodeJS {
         @Field("progress") progress: Int,
         @Field("points") points: Int,
         @Field("done") done: Boolean
-    ):Call<String>
+    ): Call<String>
 
 
 }
