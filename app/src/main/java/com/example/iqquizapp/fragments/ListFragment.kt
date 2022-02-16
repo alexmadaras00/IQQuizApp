@@ -59,9 +59,8 @@ class ListFragment : Fragment(R.layout.fragment_list) {
         compositeDisposable.clear()
     }
 
-
-    override fun onStart() {
-        super.onStart()
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
         val retrofit: Retrofit = RetrofitClient().getInstance()
         myAPI = retrofit.create(INodeJS::class.java)
 
@@ -86,6 +85,10 @@ class ListFragment : Fragment(R.layout.fragment_list) {
         recyclerView.smoothScrollToPosition(0)
         AdapterList(t).addNewStatutes(t)
         recyclerView.isNestedScrollingEnabled = true
+    }
+    override fun onStart() {
+        super.onStart()
+
     }
 
 

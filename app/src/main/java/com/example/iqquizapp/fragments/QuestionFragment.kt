@@ -57,7 +57,7 @@ class QuestionFragment : Fragment(R.layout.fragment_question) {
     @SuppressLint("NewApi")
     override fun onStart() {
         super.onStart()
-      
+
         val isLoggedIn = Room.getInstance(this.requireContext()).isLoggedIn
         val retrofit: Retrofit = RetrofitClient().getInstance()
         myAPI = retrofit.create(INodeJS::class.java)
